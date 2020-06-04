@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block page_title %}Blog{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+
+        <div class="table-responsive">
+
+            <table class="table table-condensed table-sm table-bordered table-striped table-hover">
+                <thead>
+                <tr class="text-center">
+                    <th align="center">{{ _('ID') }}</th>
+                    <th align="center">{{ _('Created')|safe }}</th>
+                    <th align="center">{{ _('Updated')|safe }}</th>
+                    <th align="center">{{ _('Last<br/>Location') }}</th>
+                    <th align="center">{{ _('Feedback<br/>Nb') }}</th>
+                    <th align="center">{{ _('Feedback<br/>News List') }}</th>
+                    <th align="center">{{ _('Synced<br/>News')|safe }}</th>
+                    <th align="center">{{ _('Synced<br/>Finance')|safe }}</th>
+                    <th align="center">{{ _('Synced<br/>Doc')|safe }}</th>
+                <tr>
+                </thead>
+                <tbody>
+                {% for client in client_list[::-1] %}
+                    <tr>
+                        <td class="text-center">{{ client.id }}</td>
+                        <td align="center">{{ client.created }}</td>
+                        <td align="center">{{ client.updated }}</td>
+                        <td align="center">{{ client.last_geoloc }}</td>
+                        <td align="center">{{ client.feedback_nb }}</td>
+                        <td>{% if client.feedback_list %}
+                                    {% for k, v in client.feedback_list.items() %}
+                                        <a href="{{ url_for('private.visualization.dashboard_feedback.detail_feedback', feedback_id=k)}}">{{ v }}</a>&nbsp;|&nbsp;
+                                    {% endfor %}
+                                {% endif %}
+                        </td>
+                        <td align="center">{{ client.synced_news }}</td>
+                        <td align="center">{{ client.synced_finance }}</td>
+                        <td align="center">{{ client.synced_document }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+{% endblock %}

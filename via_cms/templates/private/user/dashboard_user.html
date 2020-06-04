@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block page_title %}User Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container" id="ajax-error"></div>
+    <div class="container-fluid">
+
+        <div class="table-responsive">
+
+            <table class="table table-condensed table-sm table-bordered table-striped table-hover">
+                <thead>
+                <tr class="text-center">
+                    <th>{{ _('ID') }}</th>
+                    <th>{{ _('Username') }}</th>
+                    <th>{{ _('Email') }}</th>
+                    <th>{{ _('Date<br>Created') }}</th>
+                    <th>{{ _('Date<br>Updated') }}</th>
+                    <th>{{ _('Date<br>Last seen') }}</th>
+                    <th>{{ _('Arabic<br>Name') }}</th>
+                    <th>{{ _('English<br>Name') }}</th>
+                    <th>{{ _('Active') }}</th>
+                    <th>{{ _('Actions') }}</th>
+                <tr>
+                </thead>
+                <tbody>
+                {% for user in user_list %}
+                    <tr id="user-{{user.id}}">
+                        <td class="text-center">{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td class="text-center">{{ user.created }}</td>
+                        <td class="text-center">{{ user.updated }}</td>
+                        <td class="text-center">{{ user.last_seen }}</td>
+                        <td class="text-right">{{ user.alias_ar }}</td>
+                        <td>{{ user.alias_en }}</td>
+                        {% if user.active %}
+                            {% set is_active = 'Yes' %}
+                            {% set active_color = 'green' %}
+                            {% set not_active_color = 'red' %}
+                            {% set active_title = 'Disable' %}
+                            {% set active_icon = 'fa-times-circle' %}
+                        {% else %}
+                            {% set is_active = 'No' %}
+                            {% set active_color = 'red' %}
+                            {% set not_active_color = 'green' %}
+                            {% set active_title = 'Enable' %}
+                            {% set active_icon = 'fa-check-circle' %}
+                        {% endif %}
+                        {% set Change_password = 'Change password' %}
+                        <td id="user-active-{{user.id}}" class="text-center" style="color:{{ active_color }};">
+                            {{ is_active }}
+                        </td>
+                        <td class="text-center">
+{#                 TODO           <a href="" style="margin:0 0.5rem;">#}
+{#                                <i class="fas fa-pencil-alt"></i>#}
+{#                            </a>#}
+                            <a href="" id="user-action-active-{{user.id}}" class="active-toggle"
+                               data-value="{{user.id}}" data-content="{{user.active}}"
+                               title="{{ active_title }}"
+                               style="margin:0 0.5rem; color: {{ not_active_color }};">
+                                <i class="far {{ active_icon }}"></i>
+                            </a>
+                            <a href="" id="Change-password-{{user.id}}" class="Change-password-toggle"
+                               data-value="{{user.id}}" data-content="{{user.active}}"
+                               data-toggle="modal" data-target="#passModal"
+                               title="{{ Change_password }}"
+                               style="margin:0 0.5rem;">
+                                <i class="fas fa-key"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a class="btn btn-info" href="{{ url_for('private.user.editor_user.create_user') }}">New user</a>
+            <hr>
+        </div>
+    </div>
+
+{% include "password_modal.html" %}
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        $('.active-toggle').click(function () {
+            var id = $(this).data("value");
+            var active = $(this).data("content");
+            var functionUrl = {{ url_for('private.callback.dashboard_user_change_active')|tojson|safe }};
+            saveUserActive(id, active, functionUrl);
+            return false;
+        });
+
+        $('.Change-password-toggle').click(function () {
+            var id = $(this).data("value");
+            document.getElementById("cng-psw-id").value = id;
+        });
+
+        $('#save-password').click(function () {
+            var id = document.getElementById("cng-psw-id").value;
+            var new_pass = document.getElementById("new_pass").value;
+            var conf_pass = document.getElementById("conf_pass").value;
+            if (new_pass == conf_pass){
+                var functionUrl = {{ url_for('private.callback.dashboard_user_change_password')|tojson|safe }};
+                saveUserPassword(id, new_pass, functionUrl);
+            }else{
+                alert('wrong password');
+            }
+            return false;
+        });
+        $('#PassModal').on('hide.bs.modal', function (e) {
+            alert('hide');
+            document.getElementById("new_pass").value = "";
+            document.getElementById("conf_pass").value = "";
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{
+  "root": {
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+      "detailed": {
+        "class": "logging.Formatter",
+        "format": "[%(asctime)s][%(processName)-18s][%(process)-7d][%(threadName)-12s][%(name)-18s][%(levelname)-8s]: %(message)s     [%(filename)s:%(lineno)s - %(funcName)-s()]"
+      }
+    },
+    "handlers": {
+      "console": {
+        "class": "logging.StreamHandler",
+        "level": "DEBUG",
+        "formatter": "detailed"
+      },
+      "file": {
+        "class": "logging.handlers.RotatingFileHandler",
+        "filename": "../log/via_broker.log",
+        "mode": "w",
+        "formatter": "detailed",
+        "maxBytes": 5242880,
+        "backupCount": 5,
+        "encoding": "utf8"
+      },
+      "errors": {
+        "class": "logging.handlers.RotatingFileHandler",
+        "filename": "../log/via_broker-errors.log",
+        "mode": "w",
+        "level": "ERROR",
+        "formatter": "detailed",
+        "maxBytes": 5242880,
+        "backupCount": 5,
+        "encoding": "utf8"
+      }
+    },
+    "root": {
+      "level": "DEBUG",
+      "handlers": [
+        "console",
+        "file",
+        "errors"
+      ]
+    }
+  },
+  "subprocess": {
+    "version": 1,
+    "disable_existing_loggers": false,
+    "handlers": {
+      "queue": {
+        "class": "logging.handlers.QueueHandler",
+        "queue": "None"
+      }
+    },
+    "root": {
+      "level": "DEBUG",
+      "handlers": [
+        "queue"
+      ]
+    }
+  }
+}

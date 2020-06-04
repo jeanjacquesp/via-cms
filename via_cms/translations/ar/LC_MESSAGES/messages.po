@@ -1,0 +1,1476 @@
+# Arabic translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-05-24 04:27+0200\n"
+"PO-Revision-Date: 2020-05-09 17:27+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ar\n"
+"Language-Team: ar <LL@li.org>\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : "
+"n%100>=3 && n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/config_vars.py:15
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/config_vars.py:18
+msgid "Config"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/headers.py:37
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/headers.py:40
+msgid "HTTP Headers"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/logger.py:87
+msgid "Logging"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/logger.py:95
+msgid "Log Messages"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/request_vars.py:16
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/request_vars.py:19
+msgid "Request Vars"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/route_list.py:16
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/route_list.py:19
+msgid "Route List"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/sqlalchemy.py:89
+msgid "SQLAlchemy"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/sqlalchemy.py:100
+msgid "SQLAlchemy queries"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/template.py:53
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/template.py:59
+msgid "Templates"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/timer.py:36
+msgid "Time"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/timer.py:49
+msgid "Resource Usage"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/timer.py:81
+msgid "User CPU time"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/timer.py:82
+msgid "System CPU time"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/timer.py:83
+msgid "Total CPU time"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/timer.py:84
+msgid "Elapsed time"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/timer.py:85
+msgid "Context switches"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/versions.py:28
+#: venv/Lib/site-packages/flask_debugtoolbar/panels/versions.py:37
+msgid "Versions"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:50
+#: venv/Lib/site-packages/wtforms/validators.py:218
+#: venv/Lib/site-packages/wtforms/validators.py:258
+msgid "This field is required."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:83
+msgid "File does not have an approved extension: {extensions}"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:88
+msgid "File does not have an approved extension."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:68
+#, python-format
+msgid "Invalid field name '%s'."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:76
+#, python-format
+msgid "Field must be equal to %(other_name)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:109
+#, python-format
+msgid "Field must be at least %(min)d character long."
+msgid_plural "Field must be at least %(min)d characters long."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:112
+#, python-format
+msgid "Field cannot be longer than %(max)d character."
+msgid_plural "Field cannot be longer than %(max)d characters."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:115
+#, python-format
+msgid "Field must be exactly %(max)d character long."
+msgid_plural "Field must be exactly %(max)d characters long."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:118
+#, python-format
+msgid "Field must be between %(min)d and %(max)d characters long."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:154
+#, python-format
+msgid "Number must be at least %(min)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:156
+#, python-format
+msgid "Number must be at most %(max)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:158
+#, python-format
+msgid "Number must be between %(min)s and %(max)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:290
+msgid "Invalid input."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:355
+msgid "Invalid email address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:388
+msgid "Invalid IP address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:430
+msgid "Invalid Mac address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:465
+msgid "Invalid URL."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:485
+msgid "Invalid UUID."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:515
+#, python-format
+msgid "Invalid value, must be one of: %(values)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:547
+#, python-format
+msgid "Invalid value, can't be any of: %(values)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/core.py:98
+#: venv/Lib/site-packages/wtforms/ext/csrf/form.py:47
+msgid "Invalid CSRF Token"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:61
+#: venv/Lib/site-packages/wtforms/ext/csrf/session.py:58
+msgid "CSRF token missing"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:69
+#: venv/Lib/site-packages/wtforms/ext/csrf/session.py:66
+msgid "CSRF failed"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:74
+#: venv/Lib/site-packages/wtforms/ext/csrf/session.py:71
+msgid "CSRF token expired"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:87
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:164
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:166
+#: venv/Lib/site-packages/wtforms/ext/django/fields.py:95
+#: venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py:125
+#: venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py:127
+#: venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py:180
+#: venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py:185
+#: venv/Lib/site-packages/wtforms/fields/core.py:513
+msgid "Not a valid choice"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:185
+msgid "Not a valid list"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:204
+msgid "Not a valid integer list"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/dateutil/fields.py:63
+msgid "Please input a date/time value"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/dateutil/fields.py:75
+#: venv/Lib/site-packages/wtforms/ext/dateutil/fields.py:83
+msgid "Invalid date/time input"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:505
+msgid "Invalid Choice: could not coerce"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:539
+msgid "Invalid choice(s): one or more data inputs could not be coerced"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:546
+#, python-format
+msgid "'%(value)s' is not a valid choice for this field"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:629
+#: venv/Lib/site-packages/wtforms/fields/core.py:639
+msgid "Not a valid integer value"
+msgstr "ليست قيمة رقم صالحة"
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:705
+msgid "Not a valid decimal value"
+msgstr "ليست قيمة رقم صالحة"
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:732
+msgid "Not a valid float value"
+msgstr "ليست قيمة رقم صالحة"
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:793
+msgid "Not a valid datetime value"
+msgstr "قيمة التاريخ والوقت غير صالحة"
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:810
+msgid "Not a valid date value"
+msgstr "ليست قيمة تاريخ صالحة"
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:827
+msgid "Not a valid time value"
+msgstr "ليست قيمة زمنية صالحة"
+
+#: via_cms/main.py:178
+msgid ""
+"You attempted to upload a file which is too big. The maximum authorised "
+"size is {} kb.<br/><p><small>We had to reset your form to prevent the "
+"browser from trying to upload this file.</small></p>"
+msgstr ""
+
+#: via_cms/main.py:183
+msgid ""
+"An unexpected error happened while processing your request. Please "
+"contact the IT support. The error is:<br\\>{}<p><small>We had to reset "
+"your form to prevent this error from causing further issues.</small></p>"
+msgstr ""
+
+#: via_cms/templates/401.html:10
+msgid "Click "
+msgstr ""
+
+#: via_cms/templates/401.html:11
+msgid "here"
+msgstr ""
+
+#: via_cms/templates/401.html:11
+msgid "to go to the home page"
+msgstr ""
+
+#: via_cms/templates/404.html:11
+msgid "Want to"
+msgstr ""
+
+#: via_cms/templates/404.html:11
+msgid "go home</a> instead?"
+msgstr ""
+
+#: via_cms/templates/500.html:10
+msgid ""
+"Sorry, something went wrong on our system. Don't panic, we are fixing it!"
+" Please try again later."
+msgstr ""
+
+#: via_cms/templates/footer.html:5
+msgid "Pax Syriana Foundation"
+msgstr ""
+
+#: via_cms/templates/navigation.html:30
+msgid "News"
+msgstr "الأخبار"
+
+#: via_cms/templates/navigation.html:33
+msgid "Docs"
+msgstr "نصائح"
+
+#: via_cms/templates/navigation.html:37
+msgid "Devices"
+msgstr "الأجهزة"
+
+#: via_cms/templates/navigation.html:48
+msgid "Publish<br/>Prices"
+msgstr "تعديل<br/>الأسعار"
+
+#: via_cms/templates/navigation.html:60
+msgid "Publish<br/>Bulletin"
+msgstr "نشرة<br/>جديدة"
+
+#: via_cms/templates/navigation.html:64
+msgid "Job vacancy"
+msgstr "إعلان وظيفة"
+
+#: via_cms/templates/navigation.html:68
+msgid "Official statement/Decision"
+msgstr "القرارات والبيانات الرسمية"
+
+#: via_cms/templates/navigation.html:72
+msgid "Missing person"
+msgstr "مفقودون"
+
+#: via_cms/templates/navigation.html:76
+msgid "Lost item"
+msgstr "مفقودات"
+
+#: via_cms/templates/navigation.html:80
+msgid "Found item"
+msgstr "معثور عليه"
+
+#: via_cms/templates/navigation.html:84
+msgid "Aid distribution"
+msgstr "توزيع مساعدات"
+
+#: via_cms/templates/navigation.html:88
+msgid "Vaccination campaign"
+msgstr "حملات لقاح"
+
+#: via_cms/templates/navigation.html:92
+msgid "Event"
+msgstr "فعاليات"
+
+#: via_cms/templates/navigation.html:96
+msgid "General service notification"
+msgstr "إعلان خدمي عام"
+
+#: via_cms/templates/navigation.html:111
+msgid "Publish<br/>Notice"
+msgstr "إنذارات<br/>جديدة"
+
+#: via_cms/templates/navigation.html:115
+msgid "Medical"
+msgstr "طبي"
+
+#: via_cms/templates/navigation.html:119
+msgid "Weather"
+msgstr "طقس"
+
+#: via_cms/templates/navigation.html:123
+msgid "Security and Safety"
+msgstr "أمني"
+
+#: via_cms/templates/navigation.html:127
+msgid "Natural disater"
+msgstr "هزات أرضية"
+
+#: via_cms/templates/navigation.html:141
+msgid "Publish<br/>Advice"
+msgstr "نصائح<br/>جديدة"
+
+#: via_cms/templates/navigation.html:145
+msgid "Home Economics"
+msgstr "الاقتصاد المنزلي"
+
+#: via_cms/templates/navigation.html:149
+msgid "Agriculture"
+msgstr "زراعية"
+
+#: via_cms/templates/navigation.html:153
+msgid "Health"
+msgstr "طبية"
+
+#: via_cms/templates/navigation.html:157
+msgid "Hygiene"
+msgstr "النظافة"
+
+#: via_cms/templates/navigation.html:161
+msgid "Family"
+msgstr "الأسرة"
+
+#: via_cms/templates/navigation.html:165
+msgid "Psychology"
+msgstr "نفسية"
+
+#: via_cms/templates/navigation.html:169
+msgid "Safety"
+msgstr "السلامة العامة"
+
+#: via_cms/templates/navigation.html:173
+msgid "Women"
+msgstr "المرأة"
+
+#: via_cms/templates/navigation.html:177
+msgid "General Advice"
+msgstr "نصائح عامة"
+
+#: via_cms/templates/navigation.html:190
+msgid "Tools"
+msgstr "الأدوات"
+
+#: via_cms/templates/navigation.html:194
+msgid "Basket dashboard"
+msgstr "سلة السلع الأساسية"
+
+#: via_cms/templates/navigation.html:198
+msgid "Create price basket"
+msgstr "إنشاء سلة السلع الأساسية"
+
+#: via_cms/templates/navigation.html:202
+msgid "Create free form json notice"
+msgstr ""
+
+#: via_cms/templates/navigation.html:216
+msgid "Admin"
+msgstr ""
+
+#: via_cms/templates/navigation.html:219
+msgid "User dashboard"
+msgstr "قائمة المستخدم"
+
+#: via_cms/templates/navigation.html:232
+msgid "My Profile"
+msgstr "ملفي"
+
+#: via_cms/templates/navigation.html:251
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#: via_cms/templates/password_modal.html:15
+msgid "New Password:"
+msgstr ""
+
+#: via_cms/templates/password_modal.html:19
+msgid "Confirm Password:"
+msgstr ""
+
+#: via_cms/templates/private/home.html:5
+msgid "VIA CMS"
+msgstr ""
+
+#: via_cms/templates/private/advice/create_advice.html:38
+msgid "New Advice"
+msgstr "نصائح جديدة"
+
+#: via_cms/templates/private/advice/detail_advice.html:11
+#: via_cms/templates/private/bulletin/detail_bulletin.html:11
+#: via_cms/templates/private/notice/detail_notice.html:11
+msgid "Title:&emsp;&emsp;&emsp;"
+msgstr "نوع المادة:&emsp;&emsp;&emsp;"
+
+#: via_cms/templates/private/advice/detail_advice.html:13
+#: via_cms/templates/private/bulletin/detail_bulletin.html:13
+#: via_cms/templates/private/document/detail_document.html:13
+#: via_cms/templates/private/news/detail_news.html:13
+#: via_cms/templates/private/notice/detail_notice.html:13
+msgid "Headline:&emsp;"
+msgstr "العنوان:&emsp;"
+
+#: via_cms/templates/private/advice/detail_advice.html:21
+msgid "Advice:"
+msgstr "نصائح:"
+
+#: via_cms/templates/private/advice/detail_advice.html:28
+#: via_cms/templates/private/bulletin/detail_bulletin.html:35
+#: via_cms/templates/private/news/detail_news.html:36
+msgid "Contact list:"
+msgstr "قائمة الإتصال"
+
+#: via_cms/templates/private/advice/detail_advice.html:40
+#: via_cms/templates/private/bulletin/detail_bulletin.html:47
+#: via_cms/templates/private/news/detail_news.html:48
+#: via_cms/templates/private/notice/detail_notice.html:47
+msgid "There is no contact information"
+msgstr "لا توجد معلومات اتصال"
+
+#: via_cms/templates/private/advice/detail_advice.html:44
+#: via_cms/templates/private/bulletin/detail_bulletin.html:51
+#: via_cms/templates/private/document/detail_document.html:29
+#: via_cms/templates/private/news/detail_news.html:52
+#: via_cms/templates/private/notice/detail_notice.html:51
+msgid "More Information:"
+msgstr "مزيد من المعلومات"
+
+#: via_cms/templates/private/advice/detail_advice.html:47
+#: via_cms/templates/private/bulletin/detail_bulletin.html:54
+#: via_cms/templates/private/notice/detail_notice.html:54
+msgid "Renditions:"
+msgstr ""
+
+#: via_cms/templates/private/advice/detail_advice.html:56
+#: via_cms/templates/private/bulletin/detail_bulletin.html:63
+#: via_cms/templates/private/document/detail_document.html:55
+#: via_cms/templates/private/news/detail_news.html:67
+#: via_cms/templates/private/notice/detail_notice.html:63
+msgid "Feedback"
+msgstr ""
+
+#: via_cms/templates/private/advice/detail_advice.html:60
+#: via_cms/templates/private/bulletin/detail_bulletin.html:67
+#: via_cms/templates/private/notice/detail_notice.html:67
+msgid "New Feedback"
+msgstr ""
+
+#: via_cms/templates/private/basket/dashboard_basket.html:30
+#: via_cms/templates/private/basket/dashboard_basket.html:70
+#: via_cms/templates/private/client/dashboard_client.html:13
+#: via_cms/templates/private/document/dashboard_document.html:13
+#: via_cms/templates/private/news/dashboard_news.html:13
+#: via_cms/templates/private/user/dashboard_user.html:14
+#: via_cms/templates/private/user/profile_user.html:25
+#: via_cms/templates/private/user/profile_user_current.html:23
+msgid "ID"
+msgstr ""
+
+#: via_cms/templates/private/basket/dashboard_basket.html:31
+#: via_cms/templates/private/basket/dashboard_basket.html:71
+#: via_cms/templates/private/document/dashboard_document.html:14
+#: via_cms/templates/private/news/dashboard_news.html:14
+msgid "V"
+msgstr ""
+
+#: via_cms/templates/private/basket/dashboard_basket.html:32
+#: via_cms/templates/private/basket/dashboard_basket.html:72
+msgid "C"
+msgstr ""
+
+#: via_cms/templates/private/basket/dashboard_basket.html:33
+#: via_cms/templates/private/basket/dashboard_basket.html:73
+#: via_cms/templates/private/price/table_price.html:14
+msgid "Label"
+msgstr "تسمية"
+
+#: via_cms/templates/private/basket/dashboard_basket.html:34
+#: via_cms/templates/private/basket/dashboard_basket.html:74
+#: via_cms/templates/private/client/dashboard_client.html:14
+msgid "Created"
+msgstr "تاريخ الإنشاء"
+
+#: via_cms/templates/private/basket/dashboard_basket.html:35
+#: via_cms/templates/private/basket/dashboard_basket.html:75
+#: via_cms/templates/private/document/dashboard_document.html:23
+#: via_cms/templates/private/news/dashboard_news.html:23
+msgid "Editor"
+msgstr "المحرر"
+
+#: via_cms/templates/private/basket/dashboard_basket.html:36
+#: via_cms/templates/private/basket/dashboard_basket.html:76
+#: via_cms/templates/private/document/dashboard_document.html:24
+#: via_cms/templates/private/news/dashboard_news.html:24
+msgid "Status"
+msgstr "الحالة"
+
+#: via_cms/templates/private/basket/dashboard_basket.html:37
+#: via_cms/templates/private/basket/dashboard_basket.html:77
+#: via_cms/templates/private/document/dashboard_document.html:25
+#: via_cms/templates/private/news/dashboard_news.html:25
+#: via_cms/templates/private/price/table_price.html:13
+msgid "Workflow"
+msgstr "سير العمل"
+
+#: via_cms/templates/private/basket/dashboard_basket.html:38
+#: via_cms/templates/private/basket/dashboard_basket.html:78
+#: via_cms/templates/private/price/table_price.html:21
+msgid "Unit"
+msgstr "الوحدة"
+
+#: via_cms/templates/private/bulletin/create_bulletin.html:38
+msgid "New Bulletin"
+msgstr "نشرة جديدة"
+
+#: via_cms/templates/private/bulletin/create_bulletin.html:328
+msgid "Contact"
+msgstr "قائمة الإتصال"
+
+#: via_cms/templates/private/bulletin/create_bulletin.html:330
+msgid "Phone"
+msgstr "هاتف"
+
+#: via_cms/templates/private/bulletin/create_bulletin.html:333
+msgid "Add Contact"
+msgstr "أضف واحدا"
+
+#: via_cms/templates/private/bulletin/detail_bulletin.html:21
+#: via_cms/templates/private/news/detail_news.html:22
+#: via_cms/templates/private/notice/detail_notice.html:21
+msgid "Geoloc:"
+msgstr "معرف المكان:"
+
+#: via_cms/templates/private/bulletin/detail_bulletin.html:28
+msgid "Bulletin:"
+msgstr "النشرة"
+
+#: via_cms/templates/private/client/dashboard_client.html:15
+msgid "Updated"
+msgstr ""
+
+#: via_cms/templates/private/client/dashboard_client.html:16
+msgid "Last<br/>Location"
+msgstr ""
+
+#: via_cms/templates/private/client/dashboard_client.html:17
+#: via_cms/templates/private/document/dashboard_document.html:26
+#: via_cms/templates/private/news/dashboard_news.html:28
+msgid "Feedback<br/>Nb"
+msgstr ""
+
+#: via_cms/templates/private/client/dashboard_client.html:18
+msgid "Feedback<br/>News List"
+msgstr ""
+
+#: via_cms/templates/private/client/dashboard_client.html:19
+msgid "Synced<br/>News"
+msgstr ""
+
+#: via_cms/templates/private/client/dashboard_client.html:20
+msgid "Synced<br/>Finance"
+msgstr ""
+
+#: via_cms/templates/private/client/dashboard_client.html:21
+msgid "Synced<br/>Doc"
+msgstr ""
+
+#: via_cms/templates/private/document/dashboard_document.html:15
+#: via_cms/templates/private/news/dashboard_news.html:15
+msgid "Lg"
+msgstr ""
+
+#: via_cms/templates/private/document/dashboard_document.html:16
+#: via_cms/templates/private/news/dashboard_news.html:16
+msgid "Title"
+msgstr "نوع المادة"
+
+#: via_cms/templates/private/document/dashboard_document.html:17
+#: via_cms/templates/private/news/dashboard_news.html:17
+#: via_cms/view/private/form/create_form_advice.py:32
+#: via_cms/view/private/form/create_form_advice.py:33
+#: via_cms/view/private/form/create_form_bulletin.py:37
+#: via_cms/view/private/form/create_form_bulletin.py:38
+#: via_cms/view/private/form/create_form_news.py:37
+#: via_cms/view/private/form/create_form_notice.py:36
+#: via_cms/view/private/form/create_form_notice.py:37
+msgid "Headline"
+msgstr "العنوان"
+
+#: via_cms/templates/private/document/dashboard_document.html:18
+#: via_cms/templates/private/news/dashboard_news.html:18
+msgid "Profile"
+msgstr ""
+
+#: via_cms/templates/private/document/dashboard_document.html:19
+#: via_cms/templates/private/news/dashboard_news.html:19
+#: via_cms/view/private/form/create_form_advice.py:29
+#: via_cms/view/private/form/create_form_bulletin.py:28
+#: via_cms/view/private/form/create_form_news.py:28
+#: via_cms/view/private/form/create_form_notice.py:28
+msgid "Subject"
+msgstr ""
+
+#: via_cms/templates/private/document/dashboard_document.html:20
+#: via_cms/templates/private/news/dashboard_news.html:20
+msgid "Date<br/>Created"
+msgstr ""
+
+#: via_cms/templates/private/document/dashboard_document.html:21
+#: via_cms/templates/private/news/dashboard_news.html:21
+msgid "Date<br/>Updated"
+msgstr ""
+
+#: via_cms/templates/private/document/dashboard_document.html:22
+#: via_cms/templates/private/news/dashboard_news.html:22
+msgid "Time<br/>Updated"
+msgstr ""
+
+#: via_cms/templates/private/document/dashboard_document.html:27
+#: via_cms/templates/private/news/dashboard_news.html:29
+msgid "Feedback<br/>List"
+msgstr ""
+
+#: via_cms/templates/private/document/dashboard_document.html:28
+#: via_cms/templates/private/news/dashboard_news.html:30
+msgid "Action"
+msgstr ""
+
+#: via_cms/templates/private/document/detail_document.html:11
+#: via_cms/templates/private/news/detail_news.html:11
+msgid "Title:&emsp;"
+msgstr "نوع المادة:&emsp;"
+
+#: via_cms/templates/private/document/detail_document.html:22
+msgid "Caption:"
+msgstr "المحتوى"
+
+#: via_cms/templates/private/document/detail_document.html:26
+msgid "No caption"
+msgstr "لا المحتوى"
+
+#: via_cms/templates/private/document/detail_document.html:33
+msgid "No more info"
+msgstr ""
+
+#: via_cms/templates/private/document/detail_document.html:36
+msgid "Main medias:"
+msgstr ""
+
+#: via_cms/templates/private/document/detail_document.html:40
+#: via_cms/templates/private/document/detail_document.html:47
+#: via_cms/templates/private/news/detail_news.html:59
+msgid "No media"
+msgstr ""
+
+#: via_cms/templates/private/document/detail_document.html:43
+msgid "Thumbnail media:"
+msgstr ""
+
+#: via_cms/templates/private/document/detail_document.html:59
+#: via_cms/templates/private/news/detail_news.html:71
+msgid "Not implemented"
+msgstr ""
+
+#: via_cms/templates/private/document/detail_document.html:62
+#: via_cms/templates/private/news/detail_news.html:74
+msgid "Coming soon"
+msgstr ""
+
+#: via_cms/templates/private/feedback/detail_feedback.html:12
+msgid "Feedback json:"
+msgstr ""
+
+#: via_cms/templates/private/news/dashboard_news.html:26
+msgid "Geotag"
+msgstr ""
+
+#: via_cms/templates/private/news/dashboard_news.html:27
+msgid "Geoloc ID<br/>list"
+msgstr ""
+
+#: via_cms/templates/private/news/detail_news.html:29
+msgid "Body:"
+msgstr ""
+
+#: via_cms/templates/private/news/detail_news.html:55
+msgid "Medias:"
+msgstr ""
+
+#: via_cms/templates/private/notice/create_notice.html:38
+msgid "New Notice"
+msgstr "إنذارات جديدة"
+
+#: via_cms/templates/private/notice/detail_notice.html:28
+msgid "Notice:"
+msgstr "إنذارات:"
+
+#: via_cms/templates/private/notice/detail_notice.html:35
+msgid "Contact list"
+msgstr "قائمة الإتصال"
+
+#: via_cms/templates/private/price/editor_price.html:35
+msgid "Publish"
+msgstr "أصدر"
+
+#: via_cms/templates/private/price/editor_price.html:39
+msgid "Push back"
+msgstr "صد"
+
+#: via_cms/templates/private/price/editor_price.html:70
+msgid "Save as draft"
+msgstr "حفظ كمسودة"
+
+#: via_cms/templates/private/price/editor_price.html:72
+msgid "Send for validation"
+msgstr "أرسل للتحقق"
+
+#: via_cms/templates/private/price/table_price.html:11
+msgid "Post<br>Id"
+msgstr "المنشور<br/>Id"
+
+#: via_cms/templates/private/price/table_price.html:12
+msgid "Post<br>Version"
+msgstr "المنشور<br/>V"
+
+#: via_cms/templates/private/price/table_price.html:15
+msgid "Published<br>Value"
+msgstr "تم النشر<br>قيمة"
+
+#: via_cms/templates/private/price/table_price.html:16
+msgid "New<br>Value"
+msgstr "قيمة<br/>جديدة"
+
+#: via_cms/templates/private/price/table_price.html:17
+msgid "Optional"
+msgstr "اختياري"
+
+#: via_cms/templates/private/price/table_price.html:18
+msgid "Variation"
+msgstr "تباين"
+
+#: via_cms/templates/private/price/table_price.html:19
+msgid "Published<br/>Date"
+msgstr "تم النشر<br/>تاريخ"
+
+#: via_cms/templates/private/price/table_price.html:20
+msgid "Published<br/>Time"
+msgstr "تم النشر<br/>وقت"
+
+#: via_cms/templates/private/price/table_price.html:22
+msgid "Currency"
+msgstr "عملة"
+
+#: via_cms/templates/private/price/table_price.html:23
+msgid "Updated<br/>Date"
+msgstr "تم التحديث<br/>تاريخ"
+
+#: via_cms/templates/private/price/table_price.html:24
+msgid "Updated<br/>Time"
+msgstr "تم التحديث<br/>وقت"
+
+#: via_cms/templates/private/price/table_price.html:25
+msgid "Issued<br/>Date"
+msgstr "صدر<br/>تاريخ"
+
+#: via_cms/templates/private/price/table_price.html:26
+msgid "Issued<br/>Time"
+msgstr "صدر<br/>وقت"
+
+#: via_cms/templates/private/price/table_price.html:27
+msgid "Basket<br>Id"
+msgstr "السلع الأساسية<br>Id"
+
+#: via_cms/templates/private/price/table_price.html:28
+msgid "Price<br>Id"
+msgstr "السعر<br>Id"
+
+#: via_cms/templates/private/price/table_price.html:29
+msgid "Published<br>Version"
+msgstr "نشرت<br>V"
+
+#: via_cms/templates/private/price/table_price.html:30
+msgid "Editor<br/>Last action"
+msgstr "المحرر<br/>الإجراء الأخير"
+
+#: via_cms/templates/private/price/table_price.html:31
+msgid "Editor<br/>Publication"
+msgstr "المحرر<br/>المنشور"
+
+#: via_cms/templates/private/price/table_price.html:32
+msgid "Publisher"
+msgstr "الناشر"
+
+#: via_cms/templates/private/price/table_price.html:42
+msgid "Can Edit"
+msgstr "مفتوحة"
+
+#: via_cms/templates/private/user/create_user.html:4
+msgid "Create new user"
+msgstr ""
+
+#: via_cms/templates/private/user/dashboard_user.html:15
+#: via_cms/templates/private/user/profile_user.html:26
+#: via_cms/templates/private/user/profile_user_current.html:24
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: via_cms/templates/private/user/dashboard_user.html:16
+#: via_cms/templates/private/user/profile_user.html:27
+#: via_cms/templates/private/user/profile_user_current.html:25
+msgid "Email"
+msgstr "عنوان بريد الكتروني"
+
+#: via_cms/templates/private/user/dashboard_user.html:17
+#: via_cms/templates/private/user/profile_user.html:28
+#: via_cms/templates/private/user/profile_user_current.html:26
+msgid "Date<br>Created"
+msgstr "تاريخ<br>الإنشاء"
+
+#: via_cms/templates/private/user/dashboard_user.html:18
+msgid "Date<br>Updated"
+msgstr ""
+
+#: via_cms/templates/private/user/dashboard_user.html:19
+msgid "Date<br>Last seen"
+msgstr ""
+
+#: via_cms/templates/private/user/dashboard_user.html:20
+msgid "Arabic<br>Name"
+msgstr ""
+
+#: via_cms/templates/private/user/dashboard_user.html:21
+msgid "English<br>Name"
+msgstr ""
+
+#: via_cms/templates/private/user/dashboard_user.html:22
+msgid "Active"
+msgstr ""
+
+#: via_cms/templates/private/user/dashboard_user.html:23
+msgid "Actions"
+msgstr ""
+
+#: via_cms/templates/private/user/profile_user.html:16
+#: via_cms/templates/private/user/profile_user_current.html:14
+msgid "Welcome"
+msgstr ""
+
+#: via_cms/templates/private/user/profile_user.html:17
+msgid "You can only update the user's aliases"
+msgstr ""
+
+#: via_cms/templates/private/user/profile_user.html:29
+#: via_cms/templates/private/user/profile_user_current.html:27
+msgid "Arabic<br>Alias"
+msgstr ""
+
+#: via_cms/templates/private/user/profile_user.html:30
+#: via_cms/templates/private/user/profile_user_current.html:28
+msgid "English<br>Alias"
+msgstr ""
+
+#: via_cms/templates/private/user/profile_user_current.html:15
+msgid "You can only edit your aliases"
+msgstr ""
+
+#: via_cms/templates/private/user/unsubscribe.html:5
+msgid ""
+"We hope you don't really want to unsubscribe from VIA CMS, but if you "
+"insist, click below."
+msgstr ""
+
+#: via_cms/templates/private/user/unsubscribe.html:7
+msgid "Are you sure?"
+msgstr ""
+
+#: via_cms/templates/private/user/unsubscribe.html:7
+msgid "Unsubscribe"
+msgstr ""
+
+#: via_cms/templates/public/about.html:7
+msgid "About"
+msgstr ""
+
+#: via_cms/templates/public/about.html:10
+msgid "Something to say"
+msgstr ""
+
+#: via_cms/util/helper.py:65
+msgid "Only {} have access to this function."
+msgstr ""
+
+#: via_cms/util/helper.py:98
+msgid " has json errors: "
+msgstr ""
+
+#: via_cms/view/private/edition/editor_basket.py:107
+msgid "The price basket has been updated."
+msgstr "تم تحديث سلة السلع الأساسية."
+
+#: via_cms/view/private/edition/editor_document.py:66
+#: via_cms/view/private/edition/editor_document.py:68
+msgid "The advice has been sent."
+msgstr ""
+
+#: via_cms/view/private/edition/editor_document.py:106
+#: via_cms/view/private/edition/editor_news.py:122
+msgid ""
+"\"More info\" field is not set properly. It must start with: \"http://\" "
+"or \"https://\""
+msgstr "لم يتم تعيين حقل \"مزيد من المعلومات\" بشكل صحيح. يجب أن يبدأ بـ: \"//:http\" "
+"أو \"//:https\""
+
+#: via_cms/view/private/edition/editor_news.py:71
+msgid "The bulletin has been sent."
+msgstr "تم إرسال النشرة."
+
+#: via_cms/view/private/edition/editor_news.py:73
+msgid "The notice has been sent."
+msgstr ""
+
+#: via_cms/view/private/edition/editor_news.py:75
+msgid "The free form news has been sent."
+msgstr ""
+
+#: via_cms/view/private/form/create_form_advice.py:27
+#: via_cms/view/private/form/create_form_bulletin.py:26
+#: via_cms/view/private/form/create_form_news.py:26
+#: via_cms/view/private/form/create_form_notice.py:26
+msgid "Language of the post"
+msgstr "لغة المنشور"
+
+#: via_cms/view/private/form/create_form_advice.py:31
+#: via_cms/view/private/form/create_form_bulletin.py:36
+#: via_cms/view/private/form/create_form_news.py:36
+msgid "Headline <small>(required)</small>"
+msgstr "العنوان <small>(required)</small>"
+
+#: via_cms/view/private/form/create_form_advice.py:36
+msgid ""
+"Main Media file <small>(required)</small><small><p>The main media should "
+"be rectangular (portrait), ideally with a minimum ratio of 1.5 (e.g. 320 "
+"x 480 or 680 x 960 pixels). The width can be more than 480 or 960 pixels,"
+" as images are scrollable vertically. The image should be optimised for "
+"the web (minimal size). It's resolution should be 72 ppi (96 ppi if "
+"needed). The maximum size is 256kb. Format supported are jpg/jpeg and "
+"png</small></p>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_advice.py:42
+#: via_cms/view/private/form/create_form_advice.py:48
+#: via_cms/view/private/form/create_form_basket.py:33
+#: via_cms/view/private/form/create_form_bulletin.py:157
+#: via_cms/view/private/form/create_form_news.py:153
+#: via_cms/view/private/form/create_form_notice.py:79
+msgid "Only images of type jpeg or png can be used"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_advice.py:44
+#: via_cms/view/private/form/create_form_bulletin.py:153
+#: via_cms/view/private/form/create_form_news.py:149
+#: via_cms/view/private/form/create_form_notice.py:75
+msgid ""
+"Icon file<p><small>The icon should be square, ideally 40x40 or 80x80 "
+"pixels. The image should be optimised for the web (minimal size). It's "
+"resolution should be 72 ppi (96 ppi if needed) Max size is 2kb. Format "
+"supported are jpg and png</small></p>"
+msgstr "ملف للرمز<p><small>The icon should be square, ideally 40x40 or 80x80 "
+"pixels. The image should be optimised for the web (minimal size). It's "
+"resolution should be 72 ppi (96 ppi if needed) Max size is 2kb. Format "
+"supported are jpg and png</small></p>"
+
+#: via_cms/view/private/form/create_form_advice.py:50
+#: via_cms/view/private/form/create_form_advice.py:51
+#: via_cms/view/private/form/create_form_advice.py:52
+msgid "Caption"
+msgstr "المحتوى"
+
+#: via_cms/view/private/form/create_form_advice.py:55
+#: via_cms/view/private/form/create_form_bulletin.py:145
+#: via_cms/view/private/form/create_form_news.py:141
+#: via_cms/view/private/form/create_form_notice.py:67
+msgid "URL for More Info <small>(must start with http:// or https://)</small>"
+msgstr "رابط لمزيد من المعلومات <small>(يجب أن تبدأ بـ \"//:https\" أو \"//:http\")</small>"
+
+#: via_cms/view/private/form/create_form_advice.py:58
+msgid "Body in json format  <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_advice.py:61
+#: via_cms/view/private/form/create_form_bulletin.py:142
+#: via_cms/view/private/form/create_form_news.py:138
+#: via_cms/view/private/form/create_form_notice.py:64
+msgid "Feedback as a series of json string"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_advice.py:64
+#: via_cms/view/private/form/create_form_basket.py:47
+#: via_cms/view/private/form/create_form_bulletin.py:159
+#: via_cms/view/private/form/create_form_news.py:155
+#: via_cms/view/private/form/create_form_notice.py:81
+msgid "Submit"
+msgstr "إرسال"
+
+#: via_cms/view/private/form/create_form_basket.py:29
+msgid ""
+"Icon file<p><small>The icon should be square, ideally 40x40 or 80x80 "
+"pixels. The image should be optimised for the web (minimal size). It's "
+"resolution should be 72 ppi (96 ppi if needed) Max size is 2kb. Format "
+"supported are jpeg and png</small></p>"
+msgstr "ملف للرمز<p><small>The icon should be square, ideally 40x40 or 80x80 "
+"pixels. The image should be optimised for the web (minimal size). It's "
+"resolution should be 72 ppi (96 ppi if needed) Max size is 2kb. Format "
+"supported are jpeg and png</small></p>"
+
+#: via_cms/view/private/form/create_form_basket.py:36
+msgid "Label in arabic <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_basket.py:38
+msgid "Label in english  <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_basket.py:40
+msgid "Unit <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_basket.py:42
+msgid "Description in arabic"
+msgstr "الوصف باللغة العربية"
+
+#: via_cms/view/private/form/create_form_basket.py:44
+msgid "Description in english"
+msgstr "الوصف بالإنجليزية"
+
+#: via_cms/view/private/form/create_form_bulletin.py:31
+#: via_cms/view/private/form/create_form_news.py:31
+#: via_cms/view/private/form/create_form_notice.py:31
+msgid "Subtitle - top"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_bulletin.py:34
+#: via_cms/view/private/form/create_form_news.py:34
+#: via_cms/view/private/form/create_form_notice.py:34
+msgid "Subtitle - bottom"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_bulletin.py:41
+#: via_cms/view/private/form/create_form_bulletin.py:42
+#: via_cms/view/private/form/create_form_bulletin.py:43
+#: via_cms/view/private/form/create_form_news.py:40
+#: via_cms/view/private/form/create_form_news.py:41
+#: via_cms/view/private/form/create_form_news.py:42
+msgid "Additional Information"
+msgstr "معلومة إضافية"
+
+#: via_cms/view/private/form/create_form_bulletin.py:47
+#: via_cms/view/private/form/create_form_bulletin.py:48
+#: via_cms/view/private/form/create_form_bulletin.py:89
+#: via_cms/view/private/form/create_form_news.py:46
+#: via_cms/view/private/form/create_form_news.py:86
+#: via_cms/view/private/form/create_form_notice.py:40
+#: via_cms/view/private/form/create_form_notice.py:41
+msgid "Place"
+msgstr "المكان"
+
+#: via_cms/view/private/form/create_form_bulletin.py:51
+#: via_cms/view/private/form/create_form_bulletin.py:52
+#: via_cms/view/private/form/create_form_news.py:49
+#: via_cms/view/private/form/create_form_news.py:50
+msgid "Employer organization"
+msgstr "المؤسسة"
+
+#: via_cms/view/private/form/create_form_bulletin.py:55
+#: via_cms/view/private/form/create_form_bulletin.py:56
+#: via_cms/view/private/form/create_form_news.py:53
+msgid "Position"
+msgstr "الوظيفة"
+
+#: via_cms/view/private/form/create_form_bulletin.py:59
+#: via_cms/view/private/form/create_form_bulletin.py:60
+#: via_cms/view/private/form/create_form_news.py:56
+#: via_cms/view/private/form/create_form_news.py:57
+msgid "Qualifications"
+msgstr "المؤهلات"
+
+#: via_cms/view/private/form/create_form_bulletin.py:63
+#: via_cms/view/private/form/create_form_bulletin.py:64
+#: via_cms/view/private/form/create_form_news.py:60
+#: via_cms/view/private/form/create_form_news.py:61
+msgid "Requirements"
+msgstr "الشروط"
+
+#: via_cms/view/private/form/create_form_bulletin.py:67
+#: via_cms/view/private/form/create_form_bulletin.py:68
+#: via_cms/view/private/form/create_form_bulletin.py:69
+#: via_cms/view/private/form/create_form_news.py:64
+#: via_cms/view/private/form/create_form_news.py:65
+#: via_cms/view/private/form/create_form_news.py:66
+msgid "About the Position"
+msgstr "معلومات الوظيفة"
+
+#: via_cms/view/private/form/create_form_bulletin.py:73
+#: via_cms/view/private/form/create_form_news.py:70
+#: via_cms/view/private/form/create_form_notice.py:50
+msgid "Summary"
+msgstr "الملخص"
+
+#: via_cms/view/private/form/create_form_bulletin.py:76
+#: via_cms/view/private/form/create_form_news.py:73
+#: via_cms/view/private/form/create_form_notice.py:53
+msgid "Date"
+msgstr "التاريخ"
+
+#: via_cms/view/private/form/create_form_bulletin.py:76
+#: via_cms/view/private/form/create_form_news.py:73
+#: via_cms/view/private/form/create_form_notice.py:53
+msgid "23.09.2019"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_bulletin.py:79
+#: via_cms/view/private/form/create_form_news.py:76
+#: via_cms/view/private/form/create_form_notice.py:56
+msgid "End Date (Optional)"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_bulletin.py:79
+#: via_cms/view/private/form/create_form_news.py:76
+#: via_cms/view/private/form/create_form_notice.py:56
+msgid "22.01.2020"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_bulletin.py:83
+#: via_cms/view/private/form/create_form_news.py:80
+msgid "Name"
+msgstr "الاسم"
+
+#: via_cms/view/private/form/create_form_bulletin.py:86
+#: via_cms/view/private/form/create_form_bulletin.py:87
+#: via_cms/view/private/form/create_form_news.py:83
+#: via_cms/view/private/form/create_form_news.py:84
+msgid "Gender"
+msgstr "الجنس"
+
+#: via_cms/view/private/form/create_form_bulletin.py:89
+#: via_cms/view/private/form/create_form_bulletin.py:124
+#: via_cms/view/private/form/create_form_bulletin.py:125
+#: via_cms/view/private/form/create_form_bulletin.py:126
+#: via_cms/view/private/form/create_form_news.py:86
+#: via_cms/view/private/form/create_form_news.py:121
+#: via_cms/view/private/form/create_form_news.py:122
+msgid "Age"
+msgstr "العمر"
+
+#: via_cms/view/private/form/create_form_bulletin.py:89
+#: via_cms/view/private/form/create_form_news.py:86
+msgid "ex: 13"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_bulletin.py:92
+#: via_cms/view/private/form/create_form_bulletin.py:93
+#: via_cms/view/private/form/create_form_news.py:89
+#: via_cms/view/private/form/create_form_news.py:90
+msgid "Special Marks"
+msgstr "العلامات المميزة"
+
+#: via_cms/view/private/form/create_form_bulletin.py:97
+#: via_cms/view/private/form/create_form_bulletin.py:98
+#: via_cms/view/private/form/create_form_news.py:94
+#: via_cms/view/private/form/create_form_news.py:95
+msgid "Item Type"
+msgstr "النوع"
+
+#: via_cms/view/private/form/create_form_bulletin.py:101
+#: via_cms/view/private/form/create_form_bulletin.py:102
+#: via_cms/view/private/form/create_form_news.py:98
+#: via_cms/view/private/form/create_form_news.py:99
+msgid "Description"
+msgstr "الوصف"
+
+#: via_cms/view/private/form/create_form_bulletin.py:106
+#: via_cms/view/private/form/create_form_bulletin.py:107
+#: via_cms/view/private/form/create_form_news.py:103
+#: via_cms/view/private/form/create_form_news.py:104
+msgid "Aid Type"
+msgstr "نوع المساعدة"
+
+#: via_cms/view/private/form/create_form_bulletin.py:110
+#: via_cms/view/private/form/create_form_bulletin.py:111
+#: via_cms/view/private/form/create_form_bulletin.py:112
+#: via_cms/view/private/form/create_form_news.py:107
+#: via_cms/view/private/form/create_form_news.py:108
+#: via_cms/view/private/form/create_form_news.py:109
+msgid "Details of assistance provided"
+msgstr "تفاصيل المساعدات المقدمة"
+
+#: via_cms/view/private/form/create_form_bulletin.py:115
+#: via_cms/view/private/form/create_form_bulletin.py:116
+#: via_cms/view/private/form/create_form_news.py:112
+#: via_cms/view/private/form/create_form_news.py:113
+msgid "Vaccination Type"
+msgstr "نوع التطعيم"
+
+#: via_cms/view/private/form/create_form_bulletin.py:119
+#: via_cms/view/private/form/create_form_bulletin.py:120
+#: via_cms/view/private/form/create_form_bulletin.py:121
+#: via_cms/view/private/form/create_form_news.py:116
+#: via_cms/view/private/form/create_form_news.py:117
+#: via_cms/view/private/form/create_form_news.py:118
+msgid "Concerned Persons"
+msgstr "الأشخاص المعنيين"
+
+#: via_cms/view/private/form/create_form_bulletin.py:129
+#: via_cms/view/private/form/create_form_bulletin.py:130
+#: via_cms/view/private/form/create_form_news.py:125
+#: via_cms/view/private/form/create_form_news.py:126
+msgid "Event Type"
+msgstr "نوع الحدث"
+
+#: via_cms/view/private/form/create_form_bulletin.py:130
+#: via_cms/view/private/form/create_form_news.py:126
+msgid "Event type"
+msgstr "نوع الحدث"
+
+#: via_cms/view/private/form/create_form_bulletin.py:133
+#: via_cms/view/private/form/create_form_bulletin.py:134
+#: via_cms/view/private/form/create_form_news.py:129
+#: via_cms/view/private/form/create_form_news.py:130
+msgid "Schedule"
+msgstr "الزمان"
+
+#: via_cms/view/private/form/create_form_bulletin.py:139
+msgid "Body in json format"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_bulletin.py:148
+#: via_cms/view/private/form/create_form_news.py:144
+#: via_cms/view/private/form/create_form_notice.py:70
+msgid "Contact information as a json string"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_bulletin.py:151
+#: via_cms/view/private/form/create_form_news.py:147
+#: via_cms/view/private/form/create_form_notice.py:73
+msgid "List of Locations <small>(required)</small>"
+msgstr "قائمة المواقع <small>(required)</small>"
+
+#: via_cms/view/private/form/create_form_login.py:17
+msgid "Username <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_login.py:18
+#: via_cms/view/private/form/create_form_registration.py:25
+msgid "Password <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_login.py:33
+msgid "Invalid username or password."
+msgstr "خطأ في اسم المستخدم أو كلمة مرور."
+
+#: via_cms/view/private/form/create_form_news.py:135
+#: via_cms/view/private/form/create_form_notice.py:61
+msgid "Body in json format <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:21
+msgid "User name <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:22
+msgid "Alias in arabic <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:23
+msgid "Alias in english <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:24
+#: via_cms/view/private/form/create_form_registration.py:57
+msgid "Email <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:26
+msgid "Verify password <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:27
+#: via_cms/view/private/form/create_form_registration.py:63
+msgid "Passwords must match"
+msgstr "الكلمة السريه يجب ان تتطابق"
+
+#: via_cms/view/private/form/create_form_registration.py:28
+msgid "Role list (except admin)"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:47
+msgid "Username already registered"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:51
+msgid "Email already registered"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:62
+msgid "Confirm Password <small>(required)</small>"
+msgstr ""
+
+#: via_cms/view/private/form/create_form_registration.py:69
+msgid "Usernames must match"
+msgstr ""
+
+#: via_cms/view/private/user/editor_user.py:60
+#: via_cms/view/private/user/manager_user.py:73
+msgid "Thank you for registering. You can now log in."
+msgstr ""
+
+#: via_cms/view/private/user/editor_user.py:60
+#: via_cms/view/private/user/manager_user.py:73
+msgid "success"
+msgstr "نجاح"
+
+#: via_cms/view/public/public.py:65
+msgid "You are logged in."
+msgstr "لقد سجلت الدخول."
+
+
+#~ msgid "Label in arabic"
+#~ msgstr "التسمية باللغة العربية"
+
+#~ msgid "Label in english"
+#~ msgstr "التسمية باللغة الإنجليزية"
+
+#~ msgid "URL for More Info"
+#~ msgstr "رابط لمزيد من المعلومات"
+
+#~ msgid "List of Locations"
+#~ msgstr "قائمة المواقع"
+
+#~ msgid "Language of the news"
+#~ msgstr "لغة النشر"
+
+#~ msgid ""
+#~ "Chicken pox vaccination campaign in "
+#~ "Idlib, from 07/05/2019 to 20/05/2019"
+#~ msgstr ""
+
+#~ msgid "More info URL"
+#~ msgstr "رابط لمزيد من المعلومات"
+
+
+#~ msgid "Alias in arabic"
+#~ msgstr "الاسم المستعار باللغة العربية"
+
+#~ msgid "Alias in english"
+#~ msgstr "الاسم بالإنجليزية"
+
+#~ msgid "Password"
+#~ msgstr "كلمه السر"
+
+#~ msgid "Verify password"
+#~ msgstr "اكد كلمة المرور"
+
+
+

@@ -1,0 +1,377 @@
+{% extends "layout.html" %}
+
+{% block page_title %}Blog{% endblock %}
+
+{% block content %}
+    <div class="container" id="ajax-error"></div>
+    <div class="container-fluid">
+        <div class="form-inline mt-4">
+            <div class="form-group shadow-textarea">
+                <form>
+                    <select id="language_picker_2" class="selectpicker p-0-5" data-width="fit">
+                        <option value=ar selected
+                                data-content='ar'>عربي
+                        </option>
+                        <option value=en
+                                data-content='en'>English
+                        </option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="form-inline mb-4">
+            <div class="form-group shadow-textarea">
+                <form>
+                    <select id="geotag_picker" class="selectpicker p-0-5" data-width="fit">
+                        {% for parent_id, parent_label, id, label in location %}
+                            <option value={{ id }}  data-content='{{ label }}'>{{ parent_label }} ({{ parent_id }}) -> {{ label }} ({{ id }})</option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+            {% if is_supervisor %}
+                <ul class="nav m-3">
+                    <li>
+                        <button id="button-publish" class="btn btn-warning btn-lg" disabled>{{ _("Publish") }}</button>
+                    </li>
+                    <span class="m-2"></span>
+                    </li>
+                    <button id="button-reject" class="btn btn-danger btn-lg" disabled>{{ _("Push back") }}</button>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-{{ subject_list[0].name }}-tab" data-toggle="pill"
+                   href="#pills-{{ subject_list[0].name }}" role="tab"
+                   aria-controls="pills-{{ subject_list[0].name }}" aria-selected="true"
+                   data-value="{{ subject_list[0].id }}">{{ subject_list[0].label.capitalize() }}</a>
+            </li>
+            {% for subject in subject_list[1:] %}
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-{{ subject.name }}-tab" data-toggle="pill"
+                       href="#pills-{{ subject.name }}" role="tab" aria-controls="pills-{{ subject.name }}"
+                       aria-selected="false"
+                       data-value="{{ subject.id }}">
+                        {{ subject.label.capitalize() }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {###
+         # the prices are injected using table_price.html_str
+         ###}
+        <div class="row" id="table_price">
+        </div>
+
+        <div class="row">
+            <button id="button-save" class="btn btn-info btn-md" disabled>{{ _("Save as draft") }}</button>
+            <span class="m-2"></span>
+            <button id="button-validate" class="btn btn-warning btn-md" disabled>{{ _("Send for validation") }}</button>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        blog = {};
+        blog.comments = blog.comments || {};
+        blog.comments.debugMode = false;
+
+        blog.isFirstLoad = function (namesp, jsFile) {
+            var isFirst = namesp.firstLoad === undefined;
+            namesp.firstLoad = false;
+
+            {#if (!isFirst) {#}
+            {#    console.log(#}
+            {#        "Warning: Javascript file is included twice: " +#}
+            {#        jsFile);#}
+            //}
+
+            return isFirst;
+        };
+        $(function () {
+
+            $(document).ready(function () {
+                if (!blog.isFirstLoad(blog.comments, "comments.js")) {
+                    return;
+                }
+
+                function update_price_table() {
+                    var language = $("#language_picker_2").val();
+                    var subject_id = $(".nav-link.active").data("value");
+                    var geoloc_id = $("#geotag_picker").val();
+                    var data = {"subject_id": subject_id, "geoloc_id": geoloc_id, "language": language};
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: {{ url_for('private.callback.editor_price_retrieve')|tojson|safe }},
+                        data: JSON.stringify(data, null, 2),
+                        contentType: "application/json",
+                        success: function (response) {
+                            $("#table_price").empty().append(response);
+                            set_table_event();
+                            checkCanValidate();
+                            checkCanPublish();
+                        },
+                        error: function (error) {
+                            {#console.log(error);#}
+                        }
+                    });
+                }
+
+                set_button_event();
+                update_price_table();
+
+                $('.nav-pills a').click(function () {
+                    $(this).tab('show');
+                });
+
+                // The on tab shown event
+                $('.nav-pills a').on('shown.bs.tab', function (e) {
+                    {#current_tab = e.target;#}
+                    {#previous_tab = e.relatedTarget;#}
+                    update_price_table();
+                });
+
+                $('#geotag_picker').change(function () {
+                    update_price_table();
+                });
+
+
+                function set_table_event() {
+                    //first unbind in case it was already bound
+                    $("table.table tr td#can-edit").unbind("click", dataClick);
+                    $("table.table tr td#can-edit").unbind("input", checkCanSave);
+                    // then re-bind
+                    $("table.table tr td#can-edit").bind("click", dataClick);
+                    $("table.table tr td#can-edit").bind("input", checkCanSave);
+                }
+
+
+                function set_button_event() {
+                    //first unbind in case it was already bound
+                    $("#button-save").unbind("click", savePriceTable);
+                    $("#button-publish").unbind("click", publishPriceTable);
+                    $("#button-reject").unbind("click", rejectPriceTable);
+                    $("#button-validate").unbind("click", validatePriceTable);
+
+                    // then re-bind
+                    $("#button-save").bind("click", savePriceTable);
+                    $("#button-publish").bind("click", publishPriceTable);
+                    $("#button-reject").bind("click", rejectPriceTable);
+                    $("#button-validate").bind("click", validatePriceTable);
+                }
+
+                function dataClick(e) {
+                    if (e.currentTarget.contentEditable != null) {
+                        $(e.currentTarget).attr("contentEditable", true);
+                    } else {
+                        $(e.currentTarget).append("<input type='text'>");
+                    }
+                }
+
+                function checkCanSave() {
+                    $('#button-validate').prop('disabled', true);
+                    var can_save = true;
+                    $("table.table tr").each(function (td, index) {
+                        if (index.cells.namedItem("can-edit") != null) {
+                            var isOptional = index.cells.namedItem("optional").innerText.length > 0
+                            var isTextEmpty = index.cells.namedItem("can-edit").innerText.length == 0
+                                              || !index.cells.namedItem("can-edit").innerText
+                            var isNumerical = $.isNumeric(index.cells.namedItem("can-edit").innerText)
+                            if (!isOptional && (isTextEmpty || !isNumerical)) {
+                                can_save = false;
+                            }
+                        }
+                    });
+                    if (can_save) {
+                        $('#button-save').prop('disabled', false);
+                    } else {
+                        $('#button-save').prop('disabled', true);
+                    }
+                }
+
+                function checkCanValidate() {
+                    var can_validate = true;
+                    $("table.table tr td#workflow").each(function (td, index) {
+                        if (index.getAttribute("workflow") !== "draft" && index.getAttribute("workflow") !== "pushed_back") {
+                            can_validate = false;
+                        }
+                        if (can_validate) {
+                            $('#button-validate').prop('disabled', false);
+                            $('#button-save').prop('disabled', true);
+                        } else {
+                            $('#button-validate').prop('disabled', true);
+                        }
+                    });
+                }
+
+                function checkCanPublish() {
+                    var can_publish = true;
+                    $("table.table tr td#workflow").each(function (td, index) {
+                        if (index.getAttribute("workflow") != "pending") {
+                            can_publish = false;
+                        }
+                        if (can_publish) {
+                            $('#button-save').prop('disabled', true);
+                            $('#button-publish').prop('disabled', false);
+                            $('#button-reject').prop('disabled', false);
+                        } else {
+                            $('#button-publish').prop('disabled', true);
+                            $('#button-reject').prop('disabled', true);
+                        }
+                    });
+                }
+
+                function savePriceTable() {
+                    var language = $("#language_picker_2").val();
+                    {#var subject_id = $(".nav-link.active").data("value");#}
+                    var finance_id = $(".tab-pane.fade.show.active").data()['finance_id']
+                    var finance_version = $(".tab-pane.fade.show.active").data()['finance_version']
+                    {#var geoloc_id = $("#geotag_picker").val();#}
+                    var value_list = {};
+                    $("table.table tr td#can-edit").each(function (td, index) {
+                        value_list[index.getAttribute("data")] = index.innerText
+                    });
+                    var data = {
+                        "finance_id": finance_id,
+                        "finance_version": finance_version,
+                        "value_list": value_list,
+                        "language": language
+                    };
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: {{ url_for('private.callback.editor_price_save')|tojson|safe }},
+                        data: JSON.stringify(data, null, 3),
+                        contentType: "application/json",
+                        success: function (response) {
+                            if (response != 'ok') {
+                                $('#ajax-error').html('<div class="col-md-12"><div class="alert alert-warning"><a class="close" title="Close" href="#" data-dismiss="alert">×</a>' + response.replace(/\n/g, "<br/>") + '</div></div></div>');
+                            } else {
+                                update_price_table();
+                            }
+                        },
+                        error: function (error) {
+                            $('#error').html(error);
+                        }
+                    });
+                }
+
+                function validatePriceTable() {
+                    var language = $("#language_picker_2").val();
+                    var finance_id = $(".tab-pane.fade.show.active").data()['finance_id']
+                    var finance_version = $(".tab-pane.fade.show.active").data()['finance_version']
+                    {#var subject_id = $(".nav-link.active").data("value");#}
+                    {#var geoloc_id = $("#geotag_picker").val();#}
+                    var value_list = {};
+                    $("table.table tr td#can-edit").each(function (td, index) {
+                        value_list[index.getAttribute("data")] = index.innerText
+                    });
+                    {#var data = {"subject_id": subject_id, "geoloc_id": geoloc_id, "value_list": value_list, "language": language};#}
+                    var data = {
+                        "finance_id": finance_id,
+                        "finance_version": finance_version,
+                        "value_list": value_list,
+                        "language": language
+                    };
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: {{ url_for('private.callback.editor_price_validate')|tojson|safe }},
+                        data: JSON.stringify(data, null, 3),
+                        contentType: "application/json",
+                        success: function (response) {
+                            if (response != 'ok') {
+                                $('#ajax-error').html('<div class="col-md-12"><div class="alert alert-warning"><a class="close" title="Close" href="#" data-dismiss="alert">×</a>' + response.replace(/\n/g, "<br/>") + '</div></div></div>');
+                            } else {
+                                update_price_table();
+                            }
+                        },
+                        error: function (error) {
+                            $('#error').html(error);
+                        }
+                    });
+                }
+
+                function publishPriceTable() {
+                    var language = $("#language_picker_2").val();
+                    var finance_id = $(".tab-pane.fade.show.active").data()['finance_id']
+                    var finance_version = $(".tab-pane.fade.show.active").data()['finance_version']
+                    {#var subject_id = $(".nav-link.active").data("value");#}
+                    {#var geoloc_id = $("#geotag_picker").val();#}
+                    var value_list = {};
+                    $("table.table tr td#cannot-edit").each(function (td, index) {
+                        value_list[index.getAttribute("data")] = index.innerText
+                    });
+                    {#var data = {"subject_id": subject_id, "geoloc_id": geoloc_id, "value_list": value_list, "language": language};#}
+                    var data = {
+                        "finance_id": finance_id,
+                        "finance_version": finance_version,
+                        "value_list": value_list,
+                        "language": language
+                    };
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: {{ url_for('private.callback.editor_price_publish')|tojson|safe }},
+                        data: JSON.stringify(data, null, 3),
+                        contentType: "application/json",
+                        success: function (response) {
+                            if (response != 'ok') {
+                                $('#ajax-error').html('<div class="col-md-12"><div class="alert alert-warning"><a class="close" title="Close" href="#" data-dismiss="alert">×</a>' + response.replace(/\n/g, "<br/>") + '</div></div></div>');
+                            } else {
+                                update_price_table();
+                            }
+                        },
+                        error: function (error) {
+                            $('#error').html(error);
+                        }
+                    });
+                }
+
+                function rejectPriceTable() {
+                    var language = $("#language_picker_2").val();
+                    var subject_id = $(".nav-link.active").data("value");
+                    var geoloc_id = $("#geotag_picker").val();
+                    var value_list = {};
+                    var finance_id = $(".tab-pane.fade.show.active").data()['finance_id']
+                    var finance_version = $(".tab-pane.fade.show.active").data()['finance_version']
+                    $("table.table tr td#cannot-edit").each(function (td, index) {
+                        value_list[index.getAttribute("data")] = index.innerText
+                    });
+
+                    {#var data = {"subject_id": subject_id, "geoloc_id": geoloc_id, "value_list": value_list, "language": language};#}
+                    var data = {
+                        "finance_id": finance_id,
+                        "finance_version": finance_version,
+                        "value_list": value_list,
+                        "language": language
+                    };
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: {{ url_for('private.callback.editor_price_reject')|tojson|safe }},
+                        data: JSON.stringify(data, null, 3),
+                        contentType: "application/json",
+                        success: function (response) {
+                            if (response != 'ok') {
+                                $('#ajax-error').html('<div class="col-md-12"><div class="alert alert-warning"><a class="close" title="Close" href="#" data-dismiss="alert">×</a>' + response.replace(/\n/g, "<br/>") + '</div></div></div>');
+                            } else {
+                                update_price_table();
+                            }
+                        },
+                        error: function (error) {
+                            $('#error').html(error);
+                        }
+                    });
+                }
+
+            });
+
+
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="no-js" lang="en" dir={{ CURRENT_DIRECTION }}>
+<head>
+    <meta charset="utf-8">
+    <title>
+        {% block page_title %}
+            PROJECT-<span class="bg-info">VIA</span> CMS
+        {% endblock %}
+    </title>
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="author" content="{% block meta_author %}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- fontawesome stylesheets-->
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet"/>
+    {% if CURRENT_DIRECTION == 'rtl' %}
+        {% assets "css_all_rtl" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}">
+        {% endassets %}
+    {% else %}
+        {% assets "css_all" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}">
+        {% endassets %}
+    {% endif %}
+    <script>{{ _GOOGLE_ANALYTICS }}</script>
+    {% block css %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+{% block body %}
+
+    {% with form=form %}
+        {% include "navigation.html" %}
+    {% endwith %}
+
+    <div class="{% block content_class %}container-fluid{% endblock content_class %}">
+        <div role="main">
+            <div class="container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        <a class="close" title="Close" href="#" data-dismiss="alert">&times;</a>
+                                        {{ _(message) }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    {% if current_user and current_user.is_authenticated %}
+        {% include "footer.html" %}
+    {% endif %}
+
+    {% assets "js_all" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+
+    {% if current_user and current_user.is_authenticated %}
+        {% if current_user.is_supervisor() %}
+            <script type="text/javascript">
+                $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
+                    if (!$(this).next().hasClass('show')) {
+                        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                    }
+                    var $subMenu = $(this).next(".dropdown-menu");
+                    $subMenu.toggleClass('show');
+                    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+                        $('.dropdown-submenu .show').removeClass("show");
+                    });
+                    return false;
+                });
+            </script>
+        {% endif %}
+    {% endif %}
+
+{#  the block js is necessary to get js injected #}
+    {% block js %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

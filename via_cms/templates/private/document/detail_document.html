@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block page_title %}{{ item.title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1>{{ "Post Id " + item.post_id }}</h1>
+
+                <h3>{{ _("Title:&emsp;") + item.title }}</h3>
+
+                <h4>{{ _("Headline:&emsp;") +item.headline }}</h4>
+
+                <p class="small">
+                    by <a href="{{ url_for("private.user.detail_user.detail_user", user_id=item.user_id) }}">{{ item.user }}</a>&nbsp;&nbsp;
+                    | &nbsp;&nbsp;{{ item.posted }}
+                </p>
+
+                <hr>
+
+                <h5 class="mt-0">{{ _("Caption:") }}</h5>
+                    {% if item.caption %}
+                        <p>{{ item.caption }}</p>
+                    {% else %}
+                        <p>{{  _("No caption") }}</p>
+                    {% endif %}
+
+                <h5 class="mt-4">{{ _("More Information:") }}</h5>
+                    {% if item.more_info %}
+                        <p>{{ item.more_info }}</p>
+                    {% else %}
+                        <p>{{  _("No more info") }}</p>
+                    {% endif %}
+
+                <h5 class="mt-4">{{ _("Main medias:") }}</h5>
+                    {% if item.rendition_main_filename %}
+                        <img src="{{ url_for('private.uploaded_file', filename=item.rendition_main_filename) }}"  width="300">
+                    {% else %}
+                        <p>{{  _("No media") }}</p>
+                    {% endif %}
+
+                <h5 class="mt-4">{{ _("Thumbnail media:") }}</h5>
+                    {% if item.rendition_thumbnail_filename %}
+                        <img src="{{ url_for('private.uploaded_file', filename=item.rendition_thumbnail_filename) }}"  width="40">
+                    {% else %}
+                        <p>{{  _("No media") }}</p>
+                    {% endif %}
+                <hr>
+                {#                    <a class="btn btn-primary" href="">{{ _("Edit") }}</a> TODO add edition#}
+            </div>
+
+            <div class="col-md-4" style="border-left:1px solid #ccc;">
+                <div class="well">
+                    <h4>{{ _("Feedback") }}</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="small"></span>
+                            <p>{{ _("Not implemented") }}</p>
+                            <span class="small text-muted" style="border-top:1px dotted #ccc;">
+{#                                <em>02/02/2020 - 16:04</em>#}
+                                <em>{{ _("Coming soon") }}</em>
+                            </span>
+                        </li>
+                        {#                        <li class="list-group-item">#}
+                        {#                            <span class="small">Client-9</span>#}
+                        {#                            <p>#}
+                        {#                                <i class="fas fa-star"></i>#}
+                        {#                                <i class="fas fa-star"></i>#}
+                        {#                                <i class="fas fa-star"></i>#}
+                        {#                                <i class="far fa-star"></i>#}
+                        {#                                <i class="far fa-star"></i>#}
+                        {#                            </p>#}
+                        {#                            <span class="small text-muted" style="border-top:1px dotted #ccc;">#}
+                        {#                                <em>20/12/2019 - 10:26</em>#}
+                        {#                            </span>#}
+                        {#                        </li>#}
+                        {#                        <li class="list-group-item">#}
+                        {#                            <span class="small">Client-33</span>#}
+                        {#                            <p>Old Feedback</p>#}
+                        {#                            <span class="small text-muted" style="border-top:1px dotted #ccc;">#}
+                        {#                                    <em>04/12/2019 - 13:54</em>#}
+                        {#                            </span>#}
+                        {#                        </li>#}
+                        {#                    </ul>#}
+                        {#                    <p class="small"><br><br><br> feedback_definition: {{ item.feedback_definition }} </p>#}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+    </script>
+{% endblock %}

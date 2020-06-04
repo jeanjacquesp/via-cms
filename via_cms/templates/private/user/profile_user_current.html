@@ -1,0 +1,82 @@
+
+{% extends "layout.html" %}
+{% block css %}
+    <style type="text/css">
+        .editable-input {
+            background: transparent;
+            border: transparent;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="text-center">
+            <h1>{{ _('Welcome') }} {{ current_user.alias_en }}</h1>
+    <h4>{{ _('You can only edit your aliases') }}</h4>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="table table-condensed table-sm table-bordered table-striped table-hover">
+                <thead>
+                <tr class="text-center">
+                    <th>{{ _('ID') }}</th>
+                    <th>{{ _('Username') }}</th>
+                    <th>{{ _('Email') }}</th>
+                    <th>{{ _('Date<br>Created') }}</th>
+                    <th>{{ _('Arabic<br>Alias') }}</th>
+                    <th>{{ _('English<br>Alias') }}</th>
+                <tr>
+                </thead>
+                <tbody>
+                    <tr id="user-{{current_user.id}}" class="text-center">
+                        <td id="user_id">{{ current_user.id }}</td>
+                        <td>{{ current_user.username }}</td>
+                        <td>{{ current_user.email }}</td>
+                        <td>{{ current_user.created }}</td>
+                        <td id="alias_ar" class="editable">{{ current_user.alias_ar }}</td>
+                        <td id="alias_en" class="editable">{{ current_user.alias_en }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-warning" onclick="makeEditable()">Edit&nbsp;&nbsp;<i class="fas fa-pencil-alt"></i></button>
+            <button class="btn btn-success" onclick="saveChanges()">Save Changes&nbsp;&nbsp;<i class="far fa-save" id="save-icon"></i></button>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        function makeEditable(){
+            var edtLst = document.getElementsByClassName("editable");
+            for (i=0; i<edtLst.length; i++){
+                edtLst[i].setAttribute("contenteditable", "true");
+                edtLst[i].style.backgroundColor = "#ffd";
+            }
+        }
+        function saveChanges(){
+            var user_id = document.getElementById("user_id").innerHTML;
+            var alias_ar = document.getElementById("alias_ar").innerHTML;
+            var alias_en = document.getElementById("alias_en").innerHTML;
+            var data = {"user_id": user_id, "alias_ar": alias_ar, "alias_en": alias_en};
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: {{ url_for('private.callback.edit_profile')|tojson|safe }},
+                data: JSON.stringify(data, null, 3),
+                contentType: "application/json",
+                success: function (response) {
+                    if (response.status == 'ok') {
+                        var edtLst = document.getElementsByClassName("editable");
+                        for (i=0; i<edtLst.length; i++){
+                            edtLst[i].setAttribute("contenteditable", "false");
+                            edtLst[i].style.backgroundColor = "#efe";
+                        }
+                    }
+                },
+                error: function (error) {
+                    $('#error').html(error);
+                }
+            });
+        }
+    </script>
+{% endblock %}

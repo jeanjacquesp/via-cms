@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container-narrow">
+        <h1>{{ _('Create new user') }}</h1>
+        <br/>
+        {% if current_user.is_admin() %}
+            <form id="registerForm" class="form form-create-user" method="POST" action="" role="form">
+                {{ register_form.hidden_tag() }}
+                <div class="form-group">
+                    {{ register_form.username.label }}
+                    {{ register_form.username(class_="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.alias_ar.label }}
+                    {{ register_form.alias_ar(class_="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.alias_en.label }}
+                    {{ register_form.alias_en(class_="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.email.label }}
+                    {{ register_form.email(class_="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.password.label }}
+                    {{ register_form.password(class_="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.confirm.label }}
+                    {{ register_form.confirm(class_="form-control") }}
+                </div>
+                <div class="form-group shadow-textarea">
+                    {{ register_form.role_list.label(class_="control-label font-weight-bold") }}
+                    {{ register_form.role_list(class_="form-control") }}
+                </div>
+                <p><input class="btn btn-default btn-submit" type="submit" value="Register"></p>
+            </form>
+        {% endif %}
+
+    </div>
+{% endblock %}
+

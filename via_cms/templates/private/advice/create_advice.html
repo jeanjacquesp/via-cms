@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+{% block page_title %}Create Ad - {{ form_doc.subject.text }}{% endblock %}
+{% block css %}
+    <!--
+  ~ Copyright 2020 Pax Syriana Foundation. Licensed under the Apache License, Version 2.0
+  ~
+  -->
+
+<style type="text/css">
+        ul.fancytree-container {
+            width: auto;
+            min-width: 20rem;
+            height: 20rem;
+            min-height: 1.75rem;
+            max-height: 40rem;
+            overflow: auto;
+            position: relative;
+            resize: both;
+        }
+
+        .fixed-size {
+            width: 400px;
+            height: 250px;
+            overflow: auto;
+            position: relative;
+        }
+
+        ::placeholder { /* Most modern browsers support this now. */
+            color: #bbb !important;
+            font-style: italic;
+            opacity: 1;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="text-center">
+            <h1>{{ _('New Advice') }}</h1>
+            <h3>{{ form_doc.subject.text }}</h3>
+        </div>
+        <div class="jumbotron col-10 offset-1" style="padding: 1.5rem;">
+            <form action="" method="post" class="form" enctype="multipart/form-data" role="form" id="form_doc">
+                {{ form_doc.hidden_tag() }}
+
+                <div class="form-group shadow-textarea">
+                    {{ form_doc.language.label(class_="control-label font-weight-bold") }}<br>
+                    {{ form_doc.language(style="padding: 0.3rem 0.5rem 0.5rem 0.5rem;") }}
+                </div>
+{#                <div class="form-group">#}
+{#                    {{ form_doc.geotag_list.label(class_="control-label font-weight-bold") }}#}
+{#                    <a href="#" class="ml-1" id="show-geo-tree" onclick="showGeoTree()" style="font-size:20px;">#}
+{#                        <i class="fas fa-angle-up tree-arrow" style="display:none;"></i>#}
+{#                        <i class="fas fa-angle-down tree-arrow"></i>#}
+{#                    </a>#}
+{#                    <hr class="tree-arrow">#}
+{#                    <div id="tree">#}
+{#                    </div>#}
+{#                </div>#}
+
+                <input type="hidden" id="title" value="{{ form_doc.subject.text }}" />
+                <div class="form-group shadow-textarea">
+                    {{ form_doc.headline.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter4"></span>
+                    {{ form_doc.headline(data_textcounterid="counter4", maxLength=form_doc.headline.validators[1].max, class_="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form_doc.rendition_main.label(class_="control-label font-weight-bold") }}
+                    {{ form_doc.rendition_main(class_="btn btn-outline-primary") }}
+                </div>
+                <div class="form-group shadow-textarea">
+                    {{ form_doc.caption.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter01"></span>
+                    {{ form_doc.caption(data_textcounterid="counter01", maxLength=form_doc.caption.validators[0].max, class_="form-control for-body") }}
+                </div>
+
+                <div class="form-group shadow-textarea">
+                    {{ form_doc.more_info.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter7"></span>
+                    {{ form_doc.more_info(data_textcounterid="counter7", maxLength=form_doc.more_info.validators[1].max, class_="form-control") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_doc.rendition_thumbnail.label(class_="control-label font-weight-bold") }}
+                    {{ form_doc.rendition_thumbnail(class_="btn btn-outline-primary") }}
+                </div>
+
+                <div class="form-group shadow-textarea" style="display:none;">
+                    {{ form_doc.body_json.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter5"></span>
+                    {{ form_doc.body_json(data_textcounterid="counter5", maxLength=form_doc.body_json.validators[1].max, class_="form-control") }}
+                </div>
+                <div class="form-group shadow-textarea" style="display:none;">
+                    {{ form_doc.feedback_definition.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter6"></span>
+                    {{ form_doc.feedback_definition(data_textcounterid="counter6", maxLength=form_doc.feedback_definition.validators[1].max, class_="form-control") }}
+                </div>
+
+
+                {{ form_doc.submit(onclick="submit_advice()", class_="btn btn-primary btn-submit btn-lg") }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <!--suppress TypeScriptValidateTypes -->
+    <script type="text/javascript">
+        $(function () {
+            $("#tree").fancytree({
+                rtl: {{ is_rtl|safe }}, // flask render argument
+                autoActivate: false, // Automatically activate a node when it is focused using keyboard
+                clickFolderMode: 4, // 1:activate, 2:expand, 3:activate and expand, 4:activate (dblclick expands)
+                checkbox: true, // Show check boxes
+                checkboxAutoHide: undefined, // Display check boxes on hover only
+                debugLevel: 4, // 0:quiet, 1:errors, 2:warnings, 3:infos, 4:debug
+                generateIds: true, // Generate id attributes like <span id='fancytree-id-KEY'>
+                icon: false, // Display node icons
+                keyboard: false, // Support keyboard navigation
+                minExpandLevel: 0, // 1: root node is not collapsible
+                tabindex: 0, // Whole tree behaves as one single control
+                selectMode: 3,
+                autoScroll: true,
+                tooltip: true,
+                source: {
+                    url: {{ url_for('private.callback.get_geoloc_tree')|tojson|safe }}, // ajax call
+                    cache: false
+                },
+
+                init: function (event, data) {
+                    data.tree.visit(function (n) {
+                        n.key = n.title.split(" ")[0]; // we want the first part until the space if any.
+                        n.expanded = true;
+                    });
+
+                },
+
+                loadChildren: function (event, ctx) {
+                    ctx.node.fixSelection3AfterClick();
+                },
+
+                select: function (event, data) {
+                    // Get a list of all selected nodes, and convert to a key array:
+                    var selKeys = $.map(data.tree.getSelectedNodes(), function (node) {
+                        return node.key;
+                    });
+                    $("#echoSelection3").text(selKeys.join(", "));
+                    // Get a list of all selected TOP nodes
+                    var selRootNodes = data.tree.getSelectedNodes(true);
+                    // ... and convert to a key array:
+                    var selRootKeys = $.map(selRootNodes, function (node) {
+                        return node.key;
+                    });
+                    $("#echoSelectionRootKeys3").text(selRootKeys.join(", "));
+                },
+                // The following options are only required, if we have more than one tree on one page:
+                cookieId: "fancytree-Cb3", idPrefix: "fancytree-Cb3-"
+            });
+
+
+            $('textarea').on("input", function () {
+                var maxlength = $(this).attr("maxlength");
+                var currentLength = $(this).val().length;
+                //if (currentLength >= maxlength) {
+                    {#console.log("You have reached the maximum number of characters.");#}
+                //}
+                {#else #}
+                  //  {
+                    {#console.log(maxlength - currentLength + " chars left");#}
+                //}
+                var counterElement = $(".textcounter#" + $(this).data("textcounterid"));
+                counterElement.html(" (" + (maxlength - this.value.length) + "/" + maxlength + ")");
+            });
+        });
+
+        function submit_advice(e) {
+            //$("#tree").fancytree("getTree").generateFormElements();
+            //var div = document.createElement("div");
+            //var tree = $("#tree").fancytree("getTree");
+            //var data = '';
+            //var first = true;
+            //$.each($('#tree').fancytree('getTree').getSelectedNodes(), function (idx, node) {
+            //    if (first) {
+            //        first = false;
+            //    } else {
+            //        data += ';';
+            //    }
+            //    data += node.data.id;
+            //});
+            {#console.log(data);#}
+            //div.innerHTML = '<textarea id="geotag_list" name="geotag_list" type="text" style="display:none;">'.concat(data).concat('</textarea>');
+            //document.getElementById("form_doc").appendChild(div);
+            getJson();
+        }
+        //function showGeoTree(){
+        //    $('#tree').toggle();
+        //    $('.tree-arrow').toggle();
+       // }
+
+
+
+    </script>
+{% endblock %}

@@ -1,0 +1,446 @@
+{% extends "layout.html" %}
+{% block page_title %}Create Ad - {{ form_news.subject.text }}{% endblock %}
+{% block css %}
+    <!--
+  ~ Copyright 2020 Pax Syriana Foundation. Licensed under the Apache License, Version 2.0
+  ~
+  -->
+
+<style type="text/css">
+        ul.fancytree-container {
+            width: auto;
+            min-width: 20rem;
+            height: 20rem;
+            min-height: 1.75rem;
+            max-height: 40rem;
+            overflow: auto;
+            position: relative;
+            resize: both;
+        }
+
+        .fixed-size {
+            width: 400px;
+            height: 250px;
+            overflow: auto;
+            position: relative;
+        }
+
+        ::placeholder { /* Most modern browsers support this now. */
+            color: #bbb !important;
+            font-style: italic;
+            opacity: 1;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="text-center">
+            <h1>{{ _('New Bulletin') }}</h1>
+            <h3>{{ form_news.subject.text }}</h3>
+        </div>
+        <div class="jumbotron col-10 offset-1" style="padding: 1.5rem;">
+            <form action="" method="post" class="form" enctype="multipart/form-data" role="form" id="form_news">
+                {{ form_news.hidden_tag() }}
+
+                <div class="form-group shadow-textarea">
+                    {{ form_news.language.label(class_="control-label font-weight-bold") }}<br>
+                    {{ form_news.language(style="padding: 0.3rem 0.5rem 0.5rem 0.5rem;") }}
+                </div>
+                <div class="form-group">
+                    {{ form_news.geotag_list.label(class_="control-label font-weight-bold") }}
+                    <a href="#" class="ml-1" id="show-geo-tree" onclick="showGeoTree()" style="font-size:20px;">
+                        <i class="fas fa-angle-up tree-arrow" style="display:none;"></i>
+                        <i class="fas fa-angle-down tree-arrow"></i>
+                    </a>
+                    <hr class="tree-arrow">
+                    <div id="tree">
+                    </div>
+                </div>
+{#                <div class="form-group shadow-textarea">#}
+{#                    {{ form_news.subject.label(class_="control-label font-weight-bold") }}#}
+{#                        <span class='textcounter' id="counter0"></span>#}
+{#                    {{ form_news.subject(data_textcounterid="counter0", class_="form-control") }}#}
+{#                </div>#}
+
+
+                {#                <div class="form-group">#}
+                {#                    {{ form_news.subtitle1.label(class_="control-label font-weight-bold") }}#}
+                {#{#                    {{ form_news.subtitle1(data_textcounterid="counter2", maxLength=form_news.subtitle1.validators[1].max, class_="form-control") }}#}
+                {#                    {{ form_news.subtitle1(class_="form-control") }}#}
+                {#                </div>#}
+                {#                <div class="form-group">#}
+                {#                    {{ form_news.subtitle2.label(class_="control-label font-weight-bold") }}#}
+                {#{#                    {{ form_news.subtitle2(data_textcounterid="counter3", maxLength=form_news.subtitle2.validators[1].max, class_="form-control") }}#}
+                {#                    {{ form_news.subtitle2(class_="form-control") }}#}
+                {#                </div>#}
+                <div class="form-group shadow-textarea">
+                    {{ form_news.headline.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter4"></span>
+                    {{ form_news.headline(data_textcounterid="counter4", maxLength=form_news.headline.validators[1].max, class_="form-control") }}
+                </div>
+
+                <input type="hidden" id="title" value="{{ form_news.subject.text }}" />
+
+                <div class="form-group shadow-textarea">
+                    {{ form_news.place.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter01"></span>
+                    {{ form_news.place(data_textcounterid="counter01", maxLength=form_news.place.validators[0].max, class_="form-control for-body") }}
+                </div>
+
+                {% if subject_name == 'job_vacancy' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.employer.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter02"></span>
+                        {{ form_news.employer(data_textcounterid="counter02", maxLength=form_news.employer.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.position.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter03"></span>
+                        {{ form_news.position(data_textcounterid="counter03", maxLength=form_news.position.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.qualifications.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter04"></span>
+                        {{ form_news.qualifications(data_textcounterid="counter04", maxLength=form_news.qualifications.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.requirements.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter05"></span>
+                        {{ form_news.requirements(data_textcounterid="counter05", maxLength=form_news.requirements.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.additional_Info.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter06"></span>
+                        {{ form_news.additional_Info(data_textcounterid="counter06", maxLength=form_news.additional_Info.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                {% elif subject_name == 'official_announcement' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.summary.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter12"></span>
+                        {{ form_news.summary(data_textcounterid="counter12", maxLength=form_news.summary.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter13"></span>
+                        {{ form_news.date(data_textcounterid="counter13", class_="form-control for-body") }}
+
+                        {{ form_news.end_date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter14"></span>
+                        {{ form_news.end_date(data_textcounterid="counter14", class_="form-control for-body") }}
+                    </div>
+                {% elif subject_name == 'missing_person' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.name.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter22"></span>
+                        {{ form_news.name(data_textcounterid="counter22", maxLength=form_news.name.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.gender.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter23"></span>
+                        {{ form_news.gender(data_textcounterid="counter23", class_="for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.age.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter24"></span>
+                        {{ form_news.age(data_textcounterid="counter24", minValue=form_news.age.validators[0].min, maxValue=form_news.age.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.special_marks.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter25"></span>
+                        {{ form_news.special_marks(data_textcounterid="counter25", maxLength=form_news.special_marks.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.additional_Info.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter26"></span>
+                        {{ form_news.additional_Info(data_textcounterid="counter26", maxLength=form_news.additional_Info.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter27"></span>
+                        {{ form_news.date(data_textcounterid="counter27", class_="form-control for-body") }}
+                    </div>
+                {% elif subject_name == 'lost_item' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.item_type.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter32"></span>
+                        {{ form_news.item_type(data_textcounterid="counter32", maxLength=form_news.item_type.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.description.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter33"></span>
+                        {{ form_news.description(data_textcounterid="counter33", maxLength=form_news.description.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.special_marks.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter34"></span>
+                        {{ form_news.special_marks(data_textcounterid="counter34", maxLength=form_news.special_marks.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.additional_Info.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter35"></span>
+                        {{ form_news.additional_Info(data_textcounterid="counter35", maxLength=form_news.additional_Info.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter36"></span>
+                        {{ form_news.date(data_textcounterid="counter36", class_="form-control for-body") }}
+                    </div>
+                {% elif subject_name == 'found_item' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.item_type.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter42"></span>
+                        {{ form_news.item_type(data_textcounterid="counter42", maxLength=form_news.item_type.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.description.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter43"></span>
+                        {{ form_news.description(data_textcounterid="counter43", maxLength=form_news.description.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.special_marks.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter44"></span>
+                        {{ form_news.special_marks(data_textcounterid="counter44", maxLength=form_news.special_marks.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.additional_Info.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter45"></span>
+                        {{ form_news.additional_Info(data_textcounterid="counter45", maxLength=form_news.additional_Info.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                {% elif subject_name == 'aid_distribution' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.aid_type.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter52"></span>
+                        {{ form_news.aid_type(data_textcounterid="counter52", maxLength=form_news.aid_type.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.aid_details.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter53"></span>
+                        {{ form_news.aid_details(data_textcounterid="counter53", maxLength=form_news.aid_details.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.requirements.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter54"></span>
+                        {{ form_news.requirements(data_textcounterid="counter54", maxLength=form_news.requirements.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter55"></span>
+                        {{ form_news.date(data_textcounterid="counter55", class_="form-control for-body") }}
+
+                        {{ form_news.end_date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter56"></span>
+                        {{ form_news.end_date(data_textcounterid="counter56", class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.additional_Info.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter57"></span>
+                        {{ form_news.additional_Info(data_textcounterid="counter06", maxLength=form_news.additional_Info.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                {% elif subject_name == 'vaccination_campaign' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.vaccination_type.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter62"></span>
+                        {{ form_news.vaccination_type(data_textcounterid="counter62", maxLength=form_news.vaccination_type.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.concerned_persons.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter63"></span>
+                        {{ form_news.concerned_persons(data_textcounterid="counter63", maxLength=form_news.concerned_persons.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.vaccination_age.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter64"></span>
+                        {{ form_news.vaccination_age(data_textcounterid="counter64", maxLength=form_news.vaccination_age.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.requirements.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter65"></span>
+                        {{ form_news.requirements(data_textcounterid="counter65", maxLength=form_news.requirements.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter66"></span>
+                        {{ form_news.date(data_textcounterid="counter66", class_="form-control for-body") }}
+
+                        {{ form_news.end_date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter67"></span>
+                        {{ form_news.end_date(data_textcounterid="counter67", class_="form-control for-body") }}
+                    </div>
+                {% elif subject_name == 'event' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.event_type.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter72"></span>
+                        {{ form_news.event_type(data_textcounterid="counter72", maxLength=form_news.event_type.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.summary.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter73"></span>
+                        {{ form_news.summary(data_textcounterid="counter73", maxLength=form_news.summary.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.event_schedule.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter74"></span>
+                        {{ form_news.event_schedule(data_textcounterid="counter74", maxLength=form_news.event_schedule.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter75"></span>
+                        {{ form_news.date(data_textcounterid="counter75", class_="form-control for-body") }}
+
+                        {{ form_news.end_date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter76"></span>
+                        {{ form_news.end_date(data_textcounterid="counter76", class_="form-control for-body") }}
+                    </div>
+                {% elif subject_name == 'service_notification' %}
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.summary.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter82"></span>
+                        {{ form_news.summary(data_textcounterid="counter82", maxLength=form_news.summary.validators[0].max, class_="form-control for-body") }}
+                    </div>
+                    <div class="form-group shadow-textarea">
+                        {{ form_news.date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter83"></span>
+                        {{ form_news.date(data_textcounterid="counter83", class_="form-control for-body") }}
+
+                        {{ form_news.end_date.label(class_="control-label font-weight-bold") }}<span
+                            class='textcounter' id="counter84"></span>
+                        {{ form_news.end_date(data_textcounterid="counter84", class_="form-control for-body") }}
+                    </div>
+                {% endif %}
+
+                <div class="form-group shadow-textarea">
+                    {{ form_news.more_info.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter7"></span>
+                    {{ form_news.more_info(data_textcounterid="counter7", maxLength=form_news.more_info.validators[1].max, class_="form-control") }}
+                </div>
+
+                <div class="form-group shadow-textarea" style="display:none;">
+                    {{ form_news.body_json.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter5"></span>
+                    {{ form_news.body_json(data_textcounterid="counter5", maxLength=form_news.body_json.validators[1].max, class_="form-control") }}
+                </div>
+                <div class="form-group shadow-textarea" style="display:none;">
+                    {{ form_news.feedback_definition.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter6"></span>
+                    {{ form_news.feedback_definition(data_textcounterid="counter6", maxLength=form_news.feedback_definition.validators[1].max, class_="form-control") }}
+                </div>
+                <div class="form-group shadow-textarea">
+                    <label class="control-label font-weight-bold" id="contact-label">{{ _("Contact") }}</label>
+                    <div class="row" id="contact-row" style="width:100%; margin-left:0;">
+                        <textarea class="form-control contact-type-field col-2" rows="1" placeholder={{ _("Phone") }}></textarea>
+                        <textarea class="form-control contact-field col-10" rows="1" placeholder="00963 987 654 321"></textarea>
+                    </div>
+                    <span class="btn btn-info col-2" onclick="addContactField()" style="margin: 5px 0;">{{ _("Add Contact") }}</span>
+                </div>
+                <div class="form-group shadow-textarea" style="display:none;">
+                    {{ form_news.contact_json.label(class_="control-label font-weight-bold") }}<span
+                        class='textcounter' id="counter8"></span>
+                    {{ form_news.contact_json(data_textcounterid="counter8", maxLength=form_news.contact_json.validators[1].max, class_="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form_news.rendition_thumbnail.label(class_="control-label font-weight-bold") }}
+                    {{ form_news.rendition_thumbnail(class_="btn btn-outline-primary") }}
+                </div>
+                {{ form_news.submit(onclick="submit_bulletin()", class_="btn btn-primary btn-submit btn-lg") }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <!--suppress TypeScriptValidateTypes -->
+    <script type="text/javascript">
+        $(function () {
+            $("#tree").fancytree({
+                rtl: {{ is_rtl|safe }}, // flask render argument
+                autoActivate: false, // Automatically activate a node when it is focused using keyboard
+                clickFolderMode: 4, // 1:activate, 2:expand, 3:activate and expand, 4:activate (dblclick expands)
+                checkbox: true, // Show check boxes
+                checkboxAutoHide: undefined, // Display check boxes on hover only
+                debugLevel: 4, // 0:quiet, 1:errors, 2:warnings, 3:infos, 4:debug
+                generateIds: true, // Generate id attributes like <span id='fancytree-id-KEY'>
+                icon: false, // Display node icons
+                keyboard: false, // Support keyboard navigation
+                minExpandLevel: 0, // 1: root node is not collapsible
+                tabindex: 0, // Whole tree behaves as one single control
+                selectMode: 3,
+                autoScroll: true,
+                tooltip: true,
+                source: {
+                    url: {{ url_for('private.callback.get_geoloc_tree')|tojson|safe }}, // ajax call
+                    cache: false
+                },
+
+                init: function (event, data) {
+                    data.tree.visit(function (n) {
+                        n.key = n.title.split(" ")[0]; // we want the first part until the space if any.
+                        n.expanded = true;
+                    });
+
+                },
+
+                loadChildren: function (event, ctx) {
+                    ctx.node.fixSelection3AfterClick();
+                },
+
+                select: function (event, data) {
+                    // Get a list of all selected nodes, and convert to a key array:
+                    var selKeys = $.map(data.tree.getSelectedNodes(), function (node) {
+                        return node.key;
+                    });
+                    $("#echoSelection3").text(selKeys.join(", "));
+                    // Get a list of all selected TOP nodes
+                    var selRootNodes = data.tree.getSelectedNodes(true);
+                    // ... and convert to a key array:
+                    var selRootKeys = $.map(selRootNodes, function (node) {
+                        return node.key;
+                    });
+                    $("#echoSelectionRootKeys3").text(selRootKeys.join(", "));
+                },
+                // The following options are only required, if we have more than one tree on one page:
+                cookieId: "fancytree-Cb3", idPrefix: "fancytree-Cb3-"
+            });
+
+
+            $('textarea').on("input", function () {
+                var maxlength = $(this).attr("maxlength");
+                var currentLength = $(this).val().length;
+                //if (currentLength >= maxlength) {
+                    {#console.log("You have reached the maximum number of characters.");#}
+                //}
+                {#else #}
+                  //  {
+                    {#console.log(maxlength - currentLength + " chars left");#}
+                //}
+                var counterElement = $(".textcounter#" + $(this).data("textcounterid"));
+                counterElement.html(" (" + (maxlength - this.value.length) + "/" + maxlength + ")");
+            });
+        });
+
+        function submit_bulletin(e) {
+            $("#tree").fancytree("getTree").generateFormElements();
+            var div = document.createElement("div");
+            var tree = $("#tree").fancytree("getTree");
+            var data = '';
+            var first = true;
+            $.each($('#tree').fancytree('getTree').getSelectedNodes(), function (idx, node) {
+                if (first) {
+                    first = false;
+                } else {
+                    data += ';';
+                }
+                data += node.data.id;
+            });
+            {#console.log(data);#}
+            div.innerHTML = '<textarea id="geotag_list" name="geotag_list" type="text" style="display:none;">'.concat(data).concat('</textarea>');
+            document.getElementById("form_news").appendChild(div);
+            getJson();
+        }
+        function showGeoTree(){
+            $('#tree').toggle();
+            $('.tree-arrow').toggle();
+        }
+
+
+
+    </script>
+{% endblock %}

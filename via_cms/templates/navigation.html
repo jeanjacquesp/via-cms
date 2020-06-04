@@ -1,0 +1,268 @@
+<nav class="nav navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <div class="container-fluid px-0">
+
+        <div class="navbar-header font-weight-bold">
+            {% if current_user and current_user.is_authenticated %}
+                <a href="{{ url_for('private.home') }}" class="navbar-brand ">
+                    <span style="color:#ffffff; background-color: #348eda; padding: 0.1rem 0.2rem 0.2rem 0.2rem; ">Project -</span><span
+                        style="color: #ffffff; background-color: #0b3251; padding: 0.1rem 0.3rem 0.2rem 0.3rem; ">VIA</span>/CMS
+                </a>
+            {% elif form %}
+                <a href="{{ url_for('public.home') }}" class="navbar-brand">
+                    <span style="color:#ffffff; background-color: #348eda; padding: 0.1rem 0.2rem 0.2rem 0.2rem; ">Project -</span><span
+                        style="color:#ffffff; background-color: #0b3251; padding: 0.1rem 0.3rem 0.2rem 0.2rem; ">VIA</span>
+                </a>
+            {% endif %}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#viaNavbar"
+                    aria-controls="via-navbar" aria-expanded="false" aria-label="Toggle nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-collapse" id="viaNavbar">
+            {% if current_user and current_user.is_authenticated %}
+
+                {# *********
+                   * DASHBOARDS
+                   **********#}
+                <ul class="nav navbar-nav font-weight-bold mx-5">
+                    <li class="nav-item mx-1"><a class="nav-link"
+                                                 href="{{ url_for('private.visualization.dashboard_news.dashboard_news') }}">{{ _('News') }}</a>
+                    </li>
+                    <li class="nav-item mx-1"><a class="nav-link"
+                                                 href="{{ url_for('private.visualization.dashboard_document.dashboard_document') }}">{{ _('Docs') }}</a>
+                    </li>
+                    {% if current_user.is_supervisor() %}
+                        <li class="nav-item mx-1"><a class="nav-link"
+                                                    href="{{ url_for('private.visualization.dashboard_client.dashboard_client') }}">{{ _('Devices') }}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                {# *********
+                   * EDIT PRICE
+                   **********#}
+                {% if current_user.is_editor() %}
+                    <ul class="nav navbar-nav font-weight-bold mx-3">
+                        <li class="nav-item"><a class="nav-link"
+                                                     href="{{ url_for('private.edition.editor_price.editor_price') }}">{{ _('Publish<br/>Prices') }}</a>
+                        </li>
+                    </ul>
+                {% endif %}
+
+                {# *********
+                   * CREATE BULLETIN
+                   **********#}
+                {% if current_user.is_editor() %}
+                    <ul class="nav navbar-nav mx-3">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle font-weight-bold" data-toggle="dropdown" href=""
+                               role="button" aria-haspopup="true" aria-expanded="true">{{ _('Publish<br/>Bulletin') }}</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='job_vacancy') }}">
+                                    {{ _('Job vacancy') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='official_announcement') }}">
+                                    {{ _('Official statement/Decision') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='missing_person') }}">
+                                    {{ _('Missing person') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='lost_item') }}">
+                                    {{ _('Lost item') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='found_item') }}">
+                                    {{ _('Found item') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='aid_distribution') }}">
+                                    {{ _('Aid distribution') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='vaccination_campaign') }}">
+                                    {{ _('Vaccination campaign') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='event') }}">
+                                    {{ _('Event') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'bulletin', subject_name='service_notification') }}">
+                                    {{ _('General service notification') }}
+                                </a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
+
+                {# *********
+                   * CREATE Notice
+                   **********#}
+                {% if current_user.is_editor() %}
+                    <ul class="nav navbar-nav mx-3">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle font-weight-bold" data-toggle="dropdown" href=""
+                               role="button" aria-haspopup="true" aria-expanded="true">{{ _('Publish<br/>Notice') }}</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'notice', subject_name='medical') }}">
+                                    {{ _('Medical') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'notice', subject_name='weather') }}">
+                                    {{ _('Weather') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'notice', subject_name='security_and_safety') }}">
+                                    {{ _('Security and Safety') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name= 'notice', subject_name='natural_disaster') }}">
+                                    {{ _('Natural disater') }}
+                                </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
+
+                {# *********
+                   * CREATE Advice
+                   **********#}
+                {% if current_user.is_editor() %}
+                    <ul class="nav navbar-nav mx-3">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle font-weight-bold" data-toggle="dropdown" href=""
+                               role="button" aria-haspopup="true" aria-expanded="true">{{ _('Publish<br/>Advice') }}</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='home_economics') }}">
+                                    {{ _('Home Economics') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='agriculture') }}">
+                                    {{ _('Agriculture') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='health') }}">
+                                    {{ _('Health') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='hygiene') }}">
+                                    {{ _('Hygiene') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='family') }}">
+                                    {{ _('Family') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='psychology') }}">
+                                    {{ _('Psychology') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='safety') }}">
+                                    {{ _('Safety') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='women') }}">
+                                    {{ _('Women') }}
+                                </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_document.create_document', profile_name= 'advice', subject_name='general_advice') }}">
+                                    {{ _('General Advice') }}
+                                </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
+
+                {# *********
+                   * Tools for supervisors and others
+                   **********#}
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav nav-item dropdown">
+                        <a class="nav-link dropdown-toggle font-weight-bold" data-toggle="dropdown" href=""
+                           role="button" aria-haspopup="true" aria-expanded="true">{{ _('Tools') }}</a>
+                        <ul class="dropdown-menu" x-placement="bottom-start"
+                            style="position: absolute; transform: translate3d(0rem, 1.75rem, 0rem); top: 0rem; will-change: transform;">
+                            <li><a class="dropdown-item"
+                                   href="{{ url_for('private.visualization.dashboard_basket.dashboard_basket') }}">{{ _('Basket dashboard') }}</a>
+                            </li>
+                            {% if current_user.is_admin() %}
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_basket.create_basket') }}">{{ _('Create price basket') }}</a>
+                                </li>
+                                <hr>
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.edition.editor_news.create_news', profile_name='free_form', subject_name='any') }}">{{ _('Create free form json notice') }}</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+
+                {# *********
+                   * ADMIN
+                   **********#}
+                {% if current_user.is_supervisor() %}
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle font-weight-bold" data-toggle="dropdown" href=""
+                               role="button" aria-haspopup="true" aria-expanded="true">{{ _('Admin') }}</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                       href="{{ url_for('private.user.dashboard_user.dashboard_user') }}">{{ _('User dashboard') }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
+
+                {# *********
+                   * PROFILE / LOGOUT
+                   **********#}
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="{{ url_for('private.user.detail_user.detail_user_current') }}">
+                            {{ _('My Profile') }}
+                        </a>
+                    </li>
+                    <li class="nav-item mx-0">
+                        <a class="nav-link" title="logout" href="{{ url_for('public.logout') }}">
+                            <i class='fas fa-sign-out-alt'></i>
+                        </a>
+                    </li>
+                </ul>
+
+            {% elif form %}
+
+                <form id="loginForm" method="POST" class="nav navbar-form form-inline ml-auto" action="/">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.username(placeholder="Username", class_="form-control form-control-sm p-1 mx-0-5") }}
+                        {{ form.password(placeholder="Password", class_="form-control form-control-sm p-1 mx-0-5") }}
+                    </div>
+                    <button type="submit"
+                            class="btn btn-primary font-weight-bold mx-1 pb-1.5 pt-1">{{ _('Log in') }}</button>
+                </form>
+
+            {% endif %}
+
+            <ul class="nav navbar-nav ml-auto">
+                <form>
+                    <select id="language_picker" class="selectpicker p-0-5" data-width="fit">
+                        {% for lang, language in LANGUAGE_DICT.items() %}
+                            <option value={{ lang }} {% if CURRENT_LANGUAGE == lang %} selected{% endif %}
+                                    data-content='{{ lang }}'>{{ language }}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </ul>
+        </div>
+    </div>
+</nav>

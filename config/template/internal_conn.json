@@ -1,0 +1,8 @@
+{
+  "_description": "INTERNAL CONNection details for communication between processes (queues)",
+  "host": "host",
+  "port": 1234,
+  "authkey": "some_uuid",
+  "timeout": 30,
+  "keepalive": 60
+}

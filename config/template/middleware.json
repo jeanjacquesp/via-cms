@@ -1,0 +1,6 @@
+{
+  "_description": "LISTEN to the host (CMS) and put them in the publication_queue",
+  "host": "host",
+  "port": 1234,
+  "authkey": "some_uuid"
+}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block page_title %}_("Detail of Feedback " + item.feedback_id){% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ "Feedback Id " + item.feedback_id }}</h1>
+        <hr>
+        {% if item['error'] %}
+            <em>Some error</em>
+        {% else %}
+            <h5>{{ _("Feedback json:") }}</h5>
+            <em>{{ item.feedback | safe }}</em>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+    </script>
+{% endblock %}

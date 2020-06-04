@@ -1,0 +1,93 @@
+{% block content %}
+    <div class="row" id="table_price">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="pills-{{ header.subject_name }}" role="tabpanel"
+                 aria-labelledby="pills-{{ header.subject_name }}-tab" data-finance_id="{{ header.finance_id }}"
+                 data-finance_version="{{ header.finance_version }}">
+                <div class="table-responsive">
+                    <table class="table table-condensed table-sm table-bordered table-striped table-hover">
+                        <thead>
+                        <tr class="text-center">
+                            <th>{{ _('Post<br>Id') }}</th>
+                            <th>{{ _('Post<br>Version') }}</th>
+                            <th>{{ _('Workflow') }}</th>
+                            <th>{{ _('Label') }}</th>
+                            <th>{{ _('Published<br>Value') }}</th>
+                            <th style="background-color:#F8FF98;font-weight:bold;">{{ _('New<br>Value') }}</th>
+                            <th>{{ _('Optional') }}</th>
+                            <th>{{ _('Variation') }}</th>
+                            <th>{{ _('Published<br/>Date')|safe }}</th>
+                            <th>{{ _('Published<br/>Time')|safe }}</th>
+                            <th>{{ _('Unit') }}</th>
+                            <th>{{ _('Currency') }}</th>
+                            <th>{{ _('Updated<br/>Date')|safe }}</th>
+                            <th>{{ _('Updated<br/>Time')|safe }}</th>
+                            <th>{{ _('Issued<br/>Date')|safe }}</th>
+                            <th>{{ _('Issued<br/>Time')|safe }}</th>
+                            <th>{{ _('Basket<br>Id') }}</th>
+                            <th>{{ _('Price<br>Id') }}</th>
+                            <th>{{ _('Published<br>Version') }}</th>
+                            <th>{{ _('Editor<br/>Last action') }}</th>
+                            <th>{{ _('Editor<br/>Publication') }}</th>
+                            <th>{{ _('Publisher') }}</th>
+                        <tr>
+                        </thead>
+                        <tbody>
+                        {% for price in price_list %}
+                            <tr class="text-center">
+                                <td>{{ header.finance_id }}</td>
+                                <td>{{ header.finance_version }}</td>
+
+                                {% if price.workflow_name == 'published' %}
+                                    <td id="workflow" workflow="{{ price.workflow_name }}">{{ _('Can Edit') }}</td>
+                                {% else %}
+                                    <td id="workflow" workflow="{{ price.workflow_name }}">{{ price.workflow_label.capitalize() }}</td>
+                                {% endif %}
+
+                                {% if CURRENT_DIRECTION == 'ltr' %}
+                                    <td align="left"><b>{{ price.label.upper() }}</b></td>
+                                {% else %}
+                                    <td align="right"><b>{{ price.label.upper() }}</b></td>
+                                {% endif %}
+
+                                <td style="min-width:4rem;">{{ price.published_value }}</td>
+
+                                {% if price.workflow_name == 'draft' or price.workflow_name == 'pushed_back' %}
+                                    <td id="can-edit" style="background-color:#F8FF98;font-weight:bold;min-width:5rem;"
+                                        data="{{ price.basket_id }};{{ price.id if price and price.id is not none else '' }};{{ price.version if price.version is not none else '' }}">{{ price.value if price.value is not none else '' }}</td>
+                                {% elif price.workflow_name == 'pending' %}
+                                    <td id="cannot-edit"
+                                        style="background-color:#f48893;font-weight:bold;min-width:5rem;"
+                                        data="{{ price.basket_id }};{{ price.id if price and price.id is not none else '' }};{{ price.version if price.version is not none else '' }}">{{ price.value if price.value is not none else '' }}</td>
+                                {% else %}  {# price.workflow_name == published #}
+                                    <td id="can-edit" style="background-color:#F8FF98;font-weight:bold;min-width:5rem;"
+                                        data="{{ price.basket_id }};{{ price.id if price and price.id is not none else '' }};{{ price.version if price.version is not none else '' }}"></td>
+                                {% endif %}
+
+                                <td id="optional">{{ 'True' if price.optional else '' }}</td>
+                                <td style="min-width:3rem;">{{ price.variation }}</td>
+
+                                <td>{{ price.published_date }}</td>
+                                <td>{{ price.published_time }}</td>
+                                <td>{{ price.unit }}</td>
+                                <td>{{ price.currency }}</td>
+                                <td>{{ price.updated_date }}</td>
+                                <td>{{ price.updated_time }}</td>
+                                <td>{{ price.issued_date }}</td>
+                                <td>{{ price.issued_time }}</td>
+                                <td>{{ price.basket_id }}</td>
+                                <td>{{ price.id }}</td>
+                                <td>{{ price.published_version }}</td>
+                                <td>{{ price.editor_updating_alias }}</td>
+                                <td>{{ price.editor_published_alias }}</td>
+                                <td>{{ price.publisher_alias }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
