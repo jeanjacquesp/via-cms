@@ -150,3 +150,6 @@ config_flask.py
 Procfile
 sql.txt
 .gitignore.*
+
+# temporary
+test/
