@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block page_title %}{{ item.title }}{% endblock %}
+{% block page_title %}{{ '{} {}'.format(item.title, item.id) }}{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -20,32 +20,42 @@
                 <hr>
 
                 <h5 class="mt-0">{{ _("Caption:") }}</h5>
+                <p style="margin-right:30px; margin-left:30px;">
                     {% if item.caption %}
                         <p>{{ item.caption }}</p>
                     {% else %}
-                        <p>{{  _("No caption") }}</p>
+                        <p>{{ _("No caption") }}</p>
                     {% endif %}
+                </p>
 
                 <h5 class="mt-4">{{ _("More Information:") }}</h5>
+                <p style="margin-right:30px; margin-left:30px;">
+
                     {% if item.more_info %}
                         <p>{{ item.more_info }}</p>
                     {% else %}
-                        <p>{{  _("No more info") }}</p>
+                        <p>{{ _("No more info") }}</p>
                     {% endif %}
+                </p>
 
                 <h5 class="mt-4">{{ _("Main medias:") }}</h5>
+                <p style="margin-right:30px; margin-left:30px;">
                     {% if item.rendition_main_filename %}
-                        <img src="{{ url_for('private.uploaded_file', filename=item.rendition_main_filename) }}"  width="300">
+                        <img src="{{ url_for('private.uploaded_file', filename=item.rendition_main_filename) }}" width="300">
                     {% else %}
-                        <p>{{  _("No media") }}</p>
+                        <p>{{ _("No media") }}</p>
                     {% endif %}
+                </p>
 
                 <h5 class="mt-4">{{ _("Thumbnail media:") }}</h5>
+                <p style="margin-right:30px; margin-left:30px;">
+
                     {% if item.rendition_thumbnail_filename %}
-                        <img src="{{ url_for('private.uploaded_file', filename=item.rendition_thumbnail_filename) }}"  width="40">
+                        <img src="{{ url_for('private.uploaded_file', filename=item.rendition_thumbnail_filename) }}" width="40">
                     {% else %}
-                        <p>{{  _("No media") }}</p>
+                        <p>{{ _("No media") }}</p>
                     {% endif %}
+                </p>
                 <hr>
                 {#                    <a class="btn btn-primary" href="">{{ _("Edit") }}</a> TODO add edition#}
             </div>
@@ -62,28 +72,8 @@
                                 <em>{{ _("Coming soon") }}</em>
                             </span>
                         </li>
-                        {#                        <li class="list-group-item">#}
-                        {#                            <span class="small">Client-9</span>#}
-                        {#                            <p>#}
-                        {#                                <i class="fas fa-star"></i>#}
-                        {#                                <i class="fas fa-star"></i>#}
-                        {#                                <i class="fas fa-star"></i>#}
-                        {#                                <i class="far fa-star"></i>#}
-                        {#                                <i class="far fa-star"></i>#}
-                        {#                            </p>#}
-                        {#                            <span class="small text-muted" style="border-top:1px dotted #ccc;">#}
-                        {#                                <em>20/12/2019 - 10:26</em>#}
-                        {#                            </span>#}
-                        {#                        </li>#}
-                        {#                        <li class="list-group-item">#}
-                        {#                            <span class="small">Client-33</span>#}
-                        {#                            <p>Old Feedback</p>#}
-                        {#                            <span class="small text-muted" style="border-top:1px dotted #ccc;">#}
-                        {#                                    <em>04/12/2019 - 13:54</em>#}
-                        {#                            </span>#}
-                        {#                        </li>#}
-                        {#                    </ul>#}
-                        {#                    <p class="small"><br><br><br> feedback_definition: {{ item.feedback_definition }} </p>#}
+                    </ul>
+
                 </div>
             </div>
         </div>

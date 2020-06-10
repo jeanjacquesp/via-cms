@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block page_title %}{{ item.title }}{% endblock %}
+{% block page_title %}{{ '{} {}'.format(item.title, item.id) }}{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -20,21 +20,21 @@
                 <hr>
 
                 <h5>{{ _("Geoloc:") }}</h5>
-                <p>
+                <p style="margin-right:30px; margin-left:30px;">
                     {% for k,v in item.geoloc_list.items() %}
                         <strong>{{ k }}: </strong>{{ v }} <br>
                     {% endfor %}
                 </p>
 
                 <h5>{{ _("Body:") }}</h5>
-                <p>
+                <p style="margin-right:30px; margin-left:30px;">
                     {% for k,v in item.body_dict.items() %}
                         <strong>{{ k }}: </strong>{{ v }} <br>
                     {% endfor %}
                 </p>
 
                 <h5>{{ _("Contact list:") }}</h5>
-                <p>
+                <p style="margin-right:30px; margin-left:30px;">
                     {% if item.contact_dict %}
                         {% for k,v in item.contact_dict.items() %}
                             {% if 'http' in v %}
@@ -50,13 +50,13 @@
                 </p>
 
                 <h5>{{ _("More Information:") }}</h5>
-                <p>{{ item.more_info }}</p>
+                <p style="margin-right:30px; margin-left:30px;">{{ item.more_info }}</p>
 
                 <h5>{{ _("Medias:") }}</h5>
                 {% if item.rendition_thumbnail_filename %}
-                    <img src="{{ url_for('private.uploaded_file', filename=item.rendition_thumbnail_filename) }}" width="40">
+                    <img style="margin-right:30px; margin-left:30px;" src="{{ url_for('private.uploaded_file', filename=item.rendition_thumbnail_filename) }}" width="40">
                 {% else %}
-                    <p>{{ _("No media") }}</p>
+                    <p style="margin-right:30px; margin-left:30px;">{{ _("No media") }}</p>
                 {% endif %}
                 <hr>
                 {#                    <a class="btn btn-primary" href="">{{ _("Edit") }}</a> TODO add edition#}
@@ -75,26 +75,20 @@
                             </span>
                         </li>
                         {#                        <li class="list-group-item">#}
-                        {#                            <span class="small">Client-9</span>#}
-                        {#                            <p>#}
+                        {#                            <span class="small">Client-9</span>#} {#                            <p>#}
                         {#                                <i class="fas fa-star"></i>#}
                         {#                                <i class="fas fa-star"></i>#}
                         {#                                <i class="fas fa-star"></i>#}
                         {#                                <i class="far fa-star"></i>#}
-                        {#                                <i class="far fa-star"></i>#}
-                        {#                            </p>#}
+                        {#                                <i class="far fa-star"></i>#} {#                            </p>#}
                         {#                            <span class="small text-muted" style="border-top:1px dotted #ccc;">#}
-                        {#                                <em>20/12/2019 - 10:26</em>#}
-                        {#                            </span>#}
-                        {#                        </li>#}
-                        {#                        <li class="list-group-item">#}
+                        {#                                <em>20/12/2019 - 10:26</em>#} {#                            </span>#}
+                        {#                        </li>#} {#                        <li class="list-group-item">#}
                         {#                            <span class="small">Client-33</span>#}
                         {#                            <p>Old Feedback</p>#}
                         {#                            <span class="small text-muted" style="border-top:1px dotted #ccc;">#}
-                        {#                                    <em>04/12/2019 - 13:54</em>#}
-                        {#                            </span>#}
-                        {#                        </li>#}
-                        {#                    </ul>#}
+                        {#                                    <em>04/12/2019 - 13:54</em>#} {#                            </span>#}
+                        {#                        </li>#} {#                    </ul>#}
                         {#                    <p class="small"><br><br><br> feedback_definition: {{ item.feedback_definition }} </p>#}
                 </div>
             </div>

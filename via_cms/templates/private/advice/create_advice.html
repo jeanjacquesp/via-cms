@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block page_title %}Create Ad - {{ form_doc.subject.text }}{% endblock %}
+{% block page_title %} {{  '{} {}'.format(_('New Document'), form_doc.subject.text) }}{% endblock %}
 {% block css %}
     <!--
   ~ Copyright 2020 Pax Syriana Foundation. Licensed under the Apache License, Version 2.0

@@ -25,7 +25,8 @@ class Price(Model, ValidateName):
     basket = db.relationship('Basket', foreign_keys=[basket_id])
 
     finance_id = db.Column(db.Integer, db.ForeignKey('feed_finance_tbl.id'), nullable=True)
-    finance = db.relationship('FeedFinance', back_populates='price_list',
+    finance = db.relationship('FeedFinance',
+                              back_populates='price_list',
                               primaryjoin="and_(Price.finance_id==FeedFinance.id,"
                                           "Price.version==FeedFinance.version)",
                               uselist=False)

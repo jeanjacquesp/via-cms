@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block page_title %}{{ item.title }}{% endblock %}
+{% block page_title %}{{ '{} {}'.format(item.title, item.id) }}{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -19,21 +19,21 @@
                 <hr>
 
                 <h5>{{ _("Geoloc:") }}</h5>
-                <p>
+                <p style="margin-right:30px; margin-left:30px;">
                     {% for k,v in item.geoloc_list.items() %}
                         <strong>{{ k }}: </strong>{{ v }} <br>
                     {% endfor %}
                 </p>
 
                 <h5>{{ _("Bulletin:") }}</h5>
-                <p>
+                <p style="margin-right:30px; margin-left:30px;">
                     {% for k,v in item.body_dict.items() %}
                         <strong>{{ k }}: </strong>{{ v }} <br>
                     {% endfor %}
                 </p>
 
                 <h5>{{ _("Contact list:") }}</h5>
-                <p>
+                <p style="margin-right:30px; margin-left:30px;">
                     {% if item.contact_dict %}
                         {% for k,v in item.contact_dict.items() %}
                             {% if 'http' in v %}
@@ -49,10 +49,10 @@
                 </p>
 
                 <h5>{{ _("More Information:") }}</h5>
-                <p>{{ item.more_info }}</p>
+                <p style="margin-right:30px; margin-left:30px;">{{ item.more_info }}</p>
 
                 <h5>{{ _("Renditions:")}}</h5>
-                <p>{{ item.renditions }}</p>
+                <p style="margin-right:30px; margin-left:30px;">{{ item.renditions }}</p>
 
                 <hr>
 {#                    <a class="btn btn-primary" href="">{{ _("Edit") }}</a> TODO add edition#}

@@ -4,6 +4,7 @@
 
 import logging
 import os
+import traceback
 from logging.handlers import RotatingFileHandler
 from multiprocessing.spawn import freeze_support
 
@@ -170,7 +171,8 @@ def create_app():
     # https://stackoverflow.com/questions/30414696/upload-file-larger-than-max-content-length-in-flask-results-connection-reset/49332379#49332379
     @app.errorhandler(Exception)
     def all_exception_handler(error):
-        logger.error(traceback.extract_tb(e.__traceback__))
+        traceback.print_exc()
+        logger.error(traceback.extract_tb(error.__traceback__))
         from werkzeug.exceptions import RequestEntityTooLarge
         if isinstance(error, RequestEntityTooLarge):
             message = _l('You attempted to upload a file which is too big. The maximum authorised size is {} kb.<br/>'

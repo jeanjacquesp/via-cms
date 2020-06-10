@@ -98,7 +98,7 @@ class MessageHandler:
             else:
                 client = Client.query.filter_by(device_id=device_id).first()  # TODO error prone
                 if client:
-                    feedback = Feedback(client_id=client.id, client=client, post_id=item_id, post=post,
+                    feedback = Feedback(client_id=client.id, client=client, post_id=item_id, post_version=post.version, post=post,
                                         feedback_json=feedback_json)
                     feedback.save()
                     if post:

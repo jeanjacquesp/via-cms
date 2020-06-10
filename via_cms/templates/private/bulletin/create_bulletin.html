@@ -1,10 +1,8 @@
 {% extends "layout.html" %}
-{% block page_title %}Create Ad - {{ form_news.subject.text }}{% endblock %}
+
+{% block page_title %} {{ '{} {}'.format(_('New Bulletin'), form_news.subject.text) }}{% endblock %}
+
 {% block css %}
-    <!--
-  ~ Copyright 2020 Pax Syriana Foundation. Licensed under the Apache License, Version 2.0
-  ~
-  -->
 
 <style type="text/css">
         ul.fancytree-container {

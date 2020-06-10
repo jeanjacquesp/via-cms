@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block page_title %}_("Detail of Feedback " + item.feedback_id){% endblock %}
+{% block page_title %}{{ '{} {}'.format(_("Detail of Feedback"), item.feedback_id)}}{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -9,8 +9,23 @@
         {% if item['error'] %}
             <em>Some error</em>
         {% else %}
+            <h5>{{ _("Post id/version:") }}</h5>
+            <p style="margin-right:30px; margin-left:30px;">
+            <em>{{ '{}/{}'.format(item.post_id, item.post_version ) }}</em>
+            <a href="{{ url_for('private.visualization.dashboard_news.detail_news', post_id=item.post_id ) }}"
+                    class="view-toggle"
+                    title="{{ View }}"
+                    style="margin:0 0.5rem;"> <i class="fas fa-eye"></i> </a>
+            </p>
+
+            <h5>{{ _("Profile:") }}</h5>
+            <p style="margin-right:30px; margin-left:30px;">
+            <em>{{ '{} ({})'.format(item.profile_name, item.profile_id) }}</em>
+            </p>
             <h5>{{ _("Feedback json:") }}</h5>
+            <p style="margin-right:30px; margin-left:30px;">
             <em>{{ item.feedback | safe }}</em>
+            </p>
         {% endif %}
     </div>
 {% endblock %}

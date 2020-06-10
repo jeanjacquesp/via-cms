@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block page_title %}{{ item.title }}{% endblock %}
+{% block page_title %}{{ '{} {}'.format(item.title, item.id) }}{% endblock %}
 
 {% block content %}
     <div class="container">

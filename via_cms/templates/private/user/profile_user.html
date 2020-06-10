@@ -1,7 +1,7 @@
 
 {% extends "layout.html" %}
 
-{% block page_title %}{{ item.user_name }}{% endblock %}
+{% block page_title %}{{ {{'{} {}'.format(_('User Profile'), item.user_name) }}{% endblock %}
 {% block css %}
     <style type="text/css">
         .editable-input {

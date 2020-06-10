@@ -40,11 +40,11 @@ class FeedPost(Model):
     user = db.relationship('User', foreign_keys=[user_id])
 
     feedback_definition = db.Column(db.Unicode(6000))
-
-    feedback_list = db.relationship('Feedback', back_populates='post')
-
+    feedback_list = db.relationship('Feedback',
+                                    back_populates='post',
+                                    primaryjoin="and_(Feedback.post_id==FeedPost.id,"
+                                                "Feedback.post_id==FeedPost.version)")
     __mapper_args__ = {
         'polymorphic_identity': ID_NONE,
         'polymorphic_on': feed_id
         }
-

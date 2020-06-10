@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block page_title %}New Blog{% endblock %}
+{% block page_title %}{{ '{} {}'.format(_('New News'), form_news.subject) }}{% endblock %}
 {% block css %}
     <style type="text/css">
         ul.fancytree-container {
