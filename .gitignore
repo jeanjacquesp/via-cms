@@ -125,18 +125,13 @@ dmypy.json
 .pyre/
 
 #other
-generated/
 .idea/
 log/
 simulation/
-config/dev*
-config/uat*
-config/prod*
 init_data/
 zold/
 zdoc/
 .env_*
-sql.txt
 *.old
 *.bak
 #.env_*
@@ -146,6 +141,7 @@ migrations/
 static/bundle/
 www/
 *.db
+sql.txt
 config_flask.py
 Procfile
 sql.txt
@@ -153,3 +149,4 @@ sql.txt
 
 # temporary
 test/
+simulation/
