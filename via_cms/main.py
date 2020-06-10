@@ -10,16 +10,16 @@ from multiprocessing import freeze_support
 
 from flask import flash
 from flask import Flask
-from flask import jsonify
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
-from via_common.util.config_mixin import ConfigMixIn
+from flask_babel import lazy_gettext as _l
+from via_common.multiprocess.logger_manager import LoggerManager
+from via_common.multiprocess.queue_manager import QueueManager
 
 from via_cms import cli
 from via_cms.asset import asset
-from flask_babel import lazy_gettext as _l
 from via_cms.config_flask import ConfigDevLocal
 from via_cms.config_flask import ConfigProd
 from via_cms.config_flask import ConfigQaTesting
@@ -32,7 +32,6 @@ from via_cms.extension import login_manager
 from via_cms.extension import migrate
 from via_cms.remote.publisher.forwarder_post import ForwarderPost
 from via_cms.remote.subscriber.listener_broker import ListenerBroker
-
 from via_cms.util.config_internal_conn import ConfigInternalConn
 from via_cms.util.config_logger import ConfigLogger
 from via_cms.util.config_middleware import ConfigMiddleware
@@ -55,8 +54,6 @@ from via_cms.view.private.visualization import dashboard_document
 from via_cms.view.private.visualization import dashboard_feedback
 from via_cms.view.private.visualization import dashboard_news
 from via_cms.view.public import public
-from via_common.multiprocess.logger_manager import LoggerManager
-from via_common.multiprocess.queue_manager import QueueManager
 
 
 """The app module, containing the app factory function."""
