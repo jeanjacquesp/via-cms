@@ -1,0 +1,121 @@
+/* =============================================================================
+   App specific CSS file.
+   ========================================================================== */
+
+body {
+  text-align: right;
+  /*padding-top: 5rem;*/
+  /*padding-right: 1.5rem;*/
+  /*padding-left: 1.5rem;*/
+  }
+
+@media(max-width: 767px) {
+    .container {
+        width: auto;
+    }
+}
+
+.alert-error {
+    color: #ffffff;
+    background-color: #ce0007;
+    border-color: #660005;
+}
+
+section {
+  overflow: auto;
+  }
+
+textarea {
+  resize: vertical;
+  }
+
+
+tr {
+  line-height: 1.1rem;
+  }
+
+footer {
+  margin-top: 2rem;
+  padding-top: 0.2rem;
+  border-top: 1px solid #eaeaea;
+  color: #999999;
+  }
+
+footer a {
+  color: #999999;
+  }
+
+footer p {
+  float: right;
+  margin-left: 2rem;
+  }
+
+footer ul {
+  list-style: none;
+  }
+
+footer ul li {
+  float: right;
+  margin-right: 1rem;
+  }
+
+footer .company {
+  float: right;
+  margin-right: 2rem;
+  }
+
+footer .footer-nav {
+  float: left;
+  margin-left: 2rem;
+  }
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+  }
+
+.navbar-header {
+  padding-left: 2rem;
+  }
+
+.navbar {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  }
+
+.navbar-nav {
+  padding-right: 0;
+  padding-left: 0;
+  }
+
+.jumbotron {
+  text-align: justify;
+  }
+
+.dropdown-menu {
+  left: auto;
+  }
+
+
+.close {
+  float: left;
+  }
+
+.ml-auto, .mx-auto {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+  }
+
+.mx-0-5 {
+  margin-left: 0.125rem !important;
+  margin-right: 0.125rem !important;
+  }
+
+
+.p-0-5 {
+  padding: 0rem 0.125rem 0.4rem 0.125rem !important;
+  }
+
+table tr td[data-priority="draft"] {background:PaleGreen;}
+table tr td[data-priority="pending"] {background:LightYellow;}
+table tr td[data-priority="rejected"] {background:Salmon;}

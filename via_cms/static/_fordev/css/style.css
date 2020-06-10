@@ -1,0 +1,120 @@
+/* =============================================================================
+   App specific CSS file.
+   ========================================================================== */
+
+body {
+  /*padding-top: 5rem;*/
+  /*padding-right: 1.5rem;*/
+  /*padding-left: 1.5rem;*/
+  }
+
+@media(max-width: 767px) {
+    .container {
+        width: auto;
+    }
+}
+
+.alert-error {
+    color: #ffffff;
+    background-color: #ce0007;
+    border-color: #660005;
+}
+
+section {
+  overflow: auto;
+  }
+
+textarea {
+  resize: vertical;
+  }
+
+
+tr {
+  line-height: 1.1rem;
+  }
+
+footer {
+  margin-top: 2rem;
+  padding-top: 0.2rem;
+  border-top: 1px solid #eaeaea;
+  color: #999999;
+  }
+
+footer a {
+  color: #999999;
+  }
+
+footer p {
+  float: right;
+  margin-right: 2rem;
+  }
+
+footer ul {
+  list-style: none;
+  }
+
+footer ul li {
+  float: left;
+  margin-left: 1rem;
+  }
+
+footer .company {
+  float: left;
+  margin-left: 2rem;
+  }
+
+footer .footer-nav {
+  float: right;
+  margin-right: 2rem;
+  list-style: none;
+  }
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+  }
+
+.navbar-header {
+  padding-right: 2rem;
+  }
+
+.navbar {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  }
+
+.selectpicker {
+  width: auto;
+  padding: 1rem;
+  }
+
+.mx-0-5 {
+  margin-left: 0.125rem !important;
+  margin-right: 0.125rem !important;
+  }
+
+.p-0-5 {
+  padding: 0.125rem 0.125rem 0.275rem 0.125rem !important;
+  }
+
+table tr td[status="draft"] {background:PaleGreen;}
+table tr td[status="pending"] {background: #ffac2e;}
+table tr td[status="rejected"] {background: #fa3c44; font-weight: bolder; color:white;}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}

@@ -144,7 +144,6 @@ sql.txt
 # Falsk
 migrations/
 static/bundle/
-static/
 www/
 *.db
 config_flask.py
