@@ -26,13 +26,13 @@ class GeolocPost(Model):
 
 
 
-# class FeedbackNews(Model):
-#     __tablename__ = 'feedback_news_tbl'
-#
-#     news_id = db.Column(db.Integer, primary_key=True)
-#     news_version = db.Column(db.Integer, primary_key=True)
-#     feedback_id = db.Column(db.Integer, primary_key=True)
-#
-#     __table_args__ = (
-#         db.ForeignKeyConstraint(['news_id', 'news_version'], ['feed_news_tbl.id', 'feed_news_tbl.version'], name='fk_news'),
-#         db.ForeignKeyConstraint(['feedback_id'], ['feedback_tbl.id'], name='fk_feedback'),)
+class FeedbackPost(Model):
+    __tablename__ = 'feedback_post_tbl'
+
+    post_id = db.Column(db.Integer, primary_key=True)
+    post_version = db.Column(db.Integer, primary_key=True)
+    feedback_id = db.Column(db.Integer, primary_key=True)
+
+    __table_args__ = (
+        db.ForeignKeyConstraint(['post_id', 'post_version'], ['feed_post_tbl.id', 'feed_post_tbl.version'], name='fk_post'),
+        db.ForeignKeyConstraint(['feedback_id'], ['feedback_tbl.id'], name='fk_feedback'),)
