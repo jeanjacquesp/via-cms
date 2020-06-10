@@ -6,7 +6,7 @@ import logging
 import os
 import traceback
 from logging.handlers import RotatingFileHandler
-from multiprocessing.spawn import freeze_support
+from multiprocessing import freeze_support
 
 from flask import flash
 from flask import Flask
