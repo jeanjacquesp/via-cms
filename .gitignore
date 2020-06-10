@@ -139,6 +139,7 @@ zdoc/
 sql.txt
 *.old
 *.bak
+#.env_*
 
 # Falsk
 migrations/
