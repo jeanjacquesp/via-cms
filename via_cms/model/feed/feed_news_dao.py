@@ -17,7 +17,7 @@ class FeedNews(FeedPost):
     __tablename__ = 'feed_news_tbl'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=False)
-    version = db.Column(db.Integer, primary_key=True)
+    version = db.Column(db.Integer, primary_key=True, autoincrement=False)
 
     title = db.Column(db.Unicode(128), nullable=False)
     # subtitle1 = db.Column(db.Unicode(128), nullable=False)

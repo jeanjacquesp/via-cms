@@ -14,7 +14,7 @@ class FeedPost(Model):
 
     # flask packages required to name the identifier column: id.
     id = db.Column(db.Integer, primary_key=True, autoincrement=False)
-    version = db.Column(db.Integer, primary_key=True)
+    version = db.Column(db.Integer, primary_key=True, autoincrement=False)
     # bookkeeping
     created = db.Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
     updated = db.Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)

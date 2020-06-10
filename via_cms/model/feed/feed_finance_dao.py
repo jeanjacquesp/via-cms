@@ -17,7 +17,7 @@ class FeedFinance(FeedPost, ValidateName):
     __tablename__ = 'feed_finance_tbl'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=False)
-    version = db.Column(db.Integer, primary_key=True)
+    version = db.Column(db.Integer, primary_key=True, autoincrement=False)
     currency = db.Column(db.Unicode(3), nullable=False)
 
     price_list = db.relationship('Price', back_populates='finance',

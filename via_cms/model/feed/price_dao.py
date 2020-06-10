@@ -17,7 +17,7 @@ class Price(Model, ValidateName):
     VALUE_INVALID = -1
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=False)
-    version = db.Column(db.Integer, primary_key=True)
+    version = db.Column(db.Integer, primary_key=True, autoincrement=False)
     value = db.Column(db.Numeric(precision=12, scale=3))  # can be null
     variation = db.Column(db.Numeric(precision=12, scale=3))
 
