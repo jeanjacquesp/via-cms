@@ -28,3 +28,6 @@ class Feedback(Model, ValidateName):  # TODO rename Feedback
     client_id = db.Column(db.Integer, db.ForeignKey('client_tbl.id'), nullable=False)
     client = db.relationship('Client', back_populates='feedback_list', uselist=False)
     feedback_json = db.Column(db.Unicode(6000))  # 26
+
+    __table_args__ = (db.ForeignKeyConstraint(['post_id', 'post_version'], ['feed_post_tbl.id', 'feed_post_tbl.version'], name='fk_feedback_post'),)
+
