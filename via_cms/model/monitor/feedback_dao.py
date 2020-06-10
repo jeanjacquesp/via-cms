@@ -26,7 +26,6 @@ class Feedback(Model, ValidateName):  # TODO rename Feedback
                                        'Feedback.post_version==FeedPost.version)',
                            foreign_keys=[post_id, post_version],
                            uselist=False)
-    # post = db.relationship("FeedPost", secondary='feedback_post_tbl', back_populates="feedback_list")
 
     client_id = db.Column(db.Integer, db.ForeignKey('client_tbl.id'), nullable=False)
     client = db.relationship('Client', back_populates='feedback_list', uselist=False)
