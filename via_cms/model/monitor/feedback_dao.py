@@ -20,12 +20,12 @@ class Feedback(Model, ValidateName):  # TODO rename Feedback
     updated = db.Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
     post_id = db.Column(db.Integer, nullable=False)
     post_version = db.Column(db.Integer, nullable=False)
-    # post = db.relationship('FeedPost',
-    #                        back_populates='feedback_list',
-    #                        primaryjoin="and_(Feedback.post.id==FeedPost.id,"
-    #                                    "Feedback.post.version==FeedPost.version)",
-    #                        foreign_keys=[post_id, post_version],
-    #                        uselist=False)
+    post = db.relationship('FeedPost',
+                           back_populates='feedback_list',
+                           primaryjoin='and_(Feedback.post_id==FeedPost.id,'
+                                       'Feedback.post_version==FeedPost.version)',
+                           foreign_keys=[post_id, post_version],
+                           uselist=False)
     # post = db.relationship("FeedPost", secondary='feedback_post_tbl', back_populates="feedback_list")
 
     client_id = db.Column(db.Integer, db.ForeignKey('client_tbl.id'), nullable=False)
