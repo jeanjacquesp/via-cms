@@ -28,8 +28,8 @@ def get_page_client(request_size, page_num, criteria='feedback_last'):
     client_list_blob = []
     for client in client_list:
         feedback_nb = len(client.feedback_list)
-        feedback_list = {feedback.id: "{}:{}".format(
-                feedback.post_id if feedback.post_id else -1, feedback.feedback_json[:48].replace('"', '').replace(' ', '') if feedback.feedback_json else '')
+        feedback_list = {feedback.id: "{}.{}:{}".format(
+                feedback.post.id if feedback.post else -1, feedback.post.version if feedback.post else -1, feedback.feedback_json[:48].replace('"', '').replace(' ', '') if feedback.feedback_json else '')
             for feedback in client.feedback_list}
         client_list_blob.append({
             'id': client.id,

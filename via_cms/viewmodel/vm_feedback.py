@@ -24,10 +24,10 @@ def itemize_feedback(feedback_id: int):
         item['feedback_id'] = str(feedback.id)
         item['created'] = feedback.created
         item['updated'] = feedback.updated
-        item['post_id'] = feedback.post_id
-        item['post_version'] = feedback.post_version
-        if feedback.post_id and feedback.post_version:
-            post = FeedPost.query.get((feedback.post_id, feedback.post_version))
+        item['post_id'] = feedback.post.id
+        item['post_version'] = feedback.post.version
+        if feedback.post.id and feedback.post.version:
+            post = FeedPost.query.get((feedback.post.id, feedback.post.version))
             item['profile_id'] = post.profile_id if post.profile_id else ''
             item['profile_name'] = Profile.query.get(post.profile_id).name if post.profile_id else ''
             item['subject_id'] = post.subject_id if post.subject_id else ''
