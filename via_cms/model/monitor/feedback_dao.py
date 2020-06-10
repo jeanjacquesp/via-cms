@@ -18,13 +18,17 @@ class Feedback(Model, ValidateName):  # TODO rename Feedback
     id = db.Column(db.Integer, primary_key=True)
     created = db.Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
     updated = db.Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
+    post_id = db.Column(db.Integer, db.ForeignKey('feed_post_tbl.id'))
+    post_version = db.Column(db.Integer, db.ForeignKey('feed_post_tbl.version'))
     post = db.relationship('FeedPost',
                            back_populates='feedback_list',
                            primaryjoin="and_(Feedback.post.id==FeedPost.id,"
                                        "Feedback.post.version==FeedPost.version)",
+                           foreign_keys=[post_id, post_version],
                            uselist=False)
     client_id = db.Column(db.Integer, db.ForeignKey('client_tbl.id'), nullable=False)
     client = db.relationship('Client', back_populates='feedback_list', uselist=False)
     feedback_json = db.Column(db.Unicode(6000))  # 26
 
+    __table_args__ = (db.ForeignKeyConstraint(['post_id', 'post_version'], ['feed_post_tbl.id', 'feed_post_tbl.version'], name='fk_feedback_post'),)
 
